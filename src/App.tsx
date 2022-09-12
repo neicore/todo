@@ -10,11 +10,11 @@ function App() {
   }
   return (
     <Button
-      // type={ButtonType.submit}
+      type={ButtonType.submit}
       label="Habari Dunia"
-      // icon={<ChevronDown />}
+      icon={<ChevronDown />}
       handleButtonClick={handleButtonClick}
-      // handleIconClick={handleIconClick}
+      handleIconClick={handleIconClick}
     />
   )
 }
