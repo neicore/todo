@@ -1,30 +1,22 @@
-import Button, { ButtonType } from './components/button'
-import CountBadge from './components/CountBadge/CountBadge'
-import { ChevronDown, Edit } from './components/icons'
-import OverlayMenu from './components/OverlayMenu'
-import MenuItem from './components/OverlayMenu/MenuItem'
+import Button from './components/button'
+import SplitButton from './components/SplitButton/Index'
 
 function App() {
-  const handleButtonClick = () => {
-    console.log('Button clicked')
+  const handlePrimaryClick = () => {
+    console.log('Primary button clicked')
   }
-  const handleIconClick = () => {
-    console.log('Icon clicked')
-  }
-  const menuItemClick = () => {
-    console.log('Menu item clicked')
+  const handleSecondaryClick = () => {
+    console.log('Secondary button clicked')
   }
   return (
     <>
-      <Button
-        type={ButtonType.submit}
-        label="Habari Dunia"
-        icon={<ChevronDown />}
-        handleButtonClick={handleButtonClick}
-        handleIconClick={handleIconClick}
+      <SplitButton
+        primaryLabel={'Primary action'}
+        secondaryLabel={'Secondary action'}
+        handlePrimaryClick={handlePrimaryClick}
+        handleSecondaryClick={handleSecondaryClick}
       />
-
-      <OverlayMenu />
+      <Button label={'Save'} handleButtonClick={handlePrimaryClick} />
     </>
   )
 }
