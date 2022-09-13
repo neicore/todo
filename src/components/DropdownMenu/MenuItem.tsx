@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import styles from './OverlayMenu.module.sass'
+import styles from './style.module.sass'
 
 interface Props {
   label: string
