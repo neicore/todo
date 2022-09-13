@@ -1,4 +1,5 @@
 import Button, { ButtonType } from './components/button'
+import CountBadge from './components/CountBadge/CountBadge'
 import { ChevronDown } from './components/icons'
 
 function App() {
@@ -9,13 +10,17 @@ function App() {
     console.log('Icon clicked')
   }
   return (
-    <Button
-      type={ButtonType.submit}
-      label="Habari Dunia"
-      icon={<ChevronDown />}
-      handleButtonClick={handleButtonClick}
-      handleIconClick={handleIconClick}
-    />
+    <>
+      <Button
+        type={ButtonType.submit}
+        label="Habari Dunia"
+        icon={<ChevronDown />}
+        handleButtonClick={handleButtonClick}
+        handleIconClick={handleIconClick}
+      />
+
+      <CountBadge count={'99+'} />
+    </>
   )
 }
 
