@@ -1,6 +1,8 @@
 import Button, { ButtonType } from './components/button'
 import CountBadge from './components/CountBadge/CountBadge'
-import { ChevronDown } from './components/icons'
+import { ChevronDown, Edit } from './components/icons'
+import OverlayMenu from './components/OverlayMenu'
+import MenuItem from './components/OverlayMenu/MenuItem'
 
 function App() {
   const handleButtonClick = () => {
@@ -8,6 +10,9 @@ function App() {
   }
   const handleIconClick = () => {
     console.log('Icon clicked')
+  }
+  const menuItemClick = () => {
+    console.log('Menu item clicked')
   }
   return (
     <>
@@ -19,7 +24,7 @@ function App() {
         handleIconClick={handleIconClick}
       />
 
-      <CountBadge count={'99+'} />
+      <OverlayMenu />
     </>
   )
 }
