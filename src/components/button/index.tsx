@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import styles from './button.module.sass'
+import styles from './Button.module.sass'
 
 interface Props {
   label: string
