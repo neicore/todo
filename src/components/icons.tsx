@@ -17,6 +17,25 @@ export const ChevronDown = () => {
     </svg>
   )
 }
+export const ChevronUp = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      width={20}
+      height={20}
+      strokeWidth={1.5}
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M4.5 15.75l7.5-7.5 7.5 7.5"
+      />
+    </svg>
+  )
+}
 
 export const Edit = () => {
   return (
@@ -57,4 +76,3 @@ export const Delete = () => {
     </svg>
   )
 }
-
