@@ -2,51 +2,54 @@
 
 .container
     width: fit-content
+    position: relative
 
-.button
-    display: flex
-    align-items: center
-    border: none
-    border-radius: 5px
-    font-size: 1rem
-    background-color: $primary_color
-    color: $white_color
-
-    .text
-        padding: 10px 20px
-        border-right: 1px solid $white_color
-        border-radius: 5px 0px 0px 5px
-
-        &:hover
-            background-color: $primary_hover
-
-    .icon
-        padding: 10px 15px
-        border-radius: 0 5px 5px 0
+    .button
         display: flex
         align-items: center
-        justify-content: center
-
-        &:hover
-            background-color: $primary_hover
-
-.secondary_container
-    margin-top: 5px
-    padding: 5px
-    border: 1px solid $gray_100
-    border-radius: 7px
-    width: 100%
-    box-shadow: 0px 5px 10px -3px #0000001A
-
-    .secondary
-        background-color: $white_color
-        color: $black_color
-        padding: 5px 10px
-        border-radius: 5px
-        width: 100%
-        text-align: left
-        font-size: 1rem
         border: none
+        border-radius: 5px
+        font-size: 1rem
+        background-color: $primary_color
+        color: $white_color
 
-        &:hover
-            background-color: $gray_100
+        .text
+            padding: 10px 20px
+            border-right: 1px solid $white_color
+            border-radius: 5px 0px 0px 5px
+
+            &:hover
+                background-color: $primary_hover
+
+        .icon
+            padding: 10px 15px
+            border-radius: 0 5px 5px 0
+            display: flex
+            align-items: center
+            justify-content: center
+
+            &:hover
+                background-color: $primary_hover
+
+    .secondary_container
+        margin-top: 5px
+        padding: 5px
+        border: 1px solid $gray_100
+        border-radius: 7px
+        width: 100%
+        box-shadow: 0px 5px 10px -3px #0000001A
+        position: absolute
+        background-color: $white_color
+
+        .secondary
+            background-color: $white_color
+            color: $black_color
+            padding: 5px 10px
+            border-radius: 5px
+            width: 100%
+            text-align: left
+            font-size: 1rem
+            border: none
+
+            &:hover
+                background-color: $gray_100

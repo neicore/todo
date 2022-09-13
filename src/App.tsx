@@ -1,4 +1,5 @@
 import Button from './components/button'
+import DropdownMenu from './components/DropdownMenu'
 import SplitButton from './components/SplitButton/Index'
 
 function App() {
@@ -17,6 +18,8 @@ function App() {
         handleSecondaryClick={handleSecondaryClick}
       />
       <Button label={'Save'} handleButtonClick={handlePrimaryClick} />
+
+      <DropdownMenu/>
     </>
   )
 }
