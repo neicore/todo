@@ -11,12 +11,13 @@ export type option = {
   value: string
   id: string
   name: string
-  Icon?: ElementType
+  IconLeft?: ElementType
+  IconRight?: ElementType
 }
 
 const Select = ({ options, type = 'single-normal' }: Props) => {
   const handleNormalClick = (e: any) => {
-    console.log(e.target.getAttribute('value'), e.target)
+    console.log(e.currentTarget.getAttribute('value'))
   }
   const handleInputClick = (e: any) => {
     if (e.target.checked) {
@@ -42,18 +43,20 @@ const Select = ({ options, type = 'single-normal' }: Props) => {
         break
 
       case 'single-normal':
-        returnComponent = options.map(({ title, value, id, name, Icon }) => (
-          <SelectItem
-            type={'normal'}
-            title={title}
-            value={value}
-            id={id}
-            name={name}
-            handleClick={handleNormalClick}
-            key={id}
-            Icon={Icon}
-          />
-        ))
+        returnComponent = options.map(
+          ({ title, value, id, name, IconLeft }) => (
+            <SelectItem
+              type={'normal'}
+              title={title}
+              value={value}
+              id={id}
+              name={name}
+              handleClick={handleNormalClick}
+              key={id}
+              IconLeft={IconLeft}
+            />
+          )
+        )
         break
 
       case 'multi-checkbox':
@@ -71,33 +74,38 @@ const Select = ({ options, type = 'single-normal' }: Props) => {
         break
 
       case 'multi-normal':
-        returnComponent = options.map(({ title, value, id, name, Icon }) => (
-          <SelectItem
-            type={'normal'}
-            title={title}
-            value={value}
-            id={id}
-            name={name}
-            handleClick={handleNormalClick}
-            key={id}
-            Icon={Icon}
-          />
-        ))
+        returnComponent = options.map(
+          ({ title, value, id, name, IconLeft, IconRight }) => (
+            <SelectItem
+              type={'normal'}
+              title={title}
+              value={value}
+              id={id}
+              name={name}
+              handleClick={handleNormalClick}
+              key={id}
+              IconLeft={IconLeft}
+              IconRight={IconRight}
+            />
+          )
+        )
         break
 
       default:
-        returnComponent = options.map(({ title, value, id, name, Icon }) => (
-          <SelectItem
-            type={'normal'}
-            title={title}
-            value={value}
-            id={id}
-            name={name}
-            handleClick={handleNormalClick}
-            key={id}
-            Icon={Icon}
-          />
-        ))
+        returnComponent = options.map(
+          ({ title, value, id, name, IconLeft }) => (
+            <SelectItem
+              type={'normal'}
+              title={title}
+              value={value}
+              id={id}
+              name={name}
+              handleClick={handleNormalClick}
+              key={id}
+              IconLeft={IconLeft}
+            />
+          )
+        )
         break
     }
 

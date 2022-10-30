@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid'
-import { Delete, Edit } from '../components/icons'
+import { Checkmark, Delete, Edit } from '../components/icons'
 import { option } from '../components/select'
 
 interface Todo {
@@ -187,34 +187,36 @@ export const normalWithIconSelectOptions: option[] = [
     value: 'Option 1',
     id: nanoid(5),
     name: 'normal-sample',
-    Icon: Edit,
+    IconLeft: Edit,
   },
   {
     title: 'Option 2',
     value: 'Option 2',
     id: nanoid(5),
     name: 'normal-sample',
-    Icon: Delete,
+    IconLeft: Delete,
   },
   {
     title: 'Option 3',
     value: 'Option 3',
     id: nanoid(5),
     name: 'normal-sample',
-    Icon: Edit,
+    IconLeft: Edit,
   },
   {
     title: 'Option 4',
     value: 'Option 4',
     id: nanoid(5),
     name: 'normal-sample',
-    Icon: Delete,
+    IconLeft: Delete,
+    IconRight: Checkmark,
   },
   {
     title: 'Option 5',
     value: 'Option 5',
     id: nanoid(5),
     name: 'normal-sample',
-    Icon: Edit,
+    IconLeft: Edit,
+    IconRight: Checkmark,
   },
 ]
