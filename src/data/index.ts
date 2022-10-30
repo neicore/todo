@@ -1,3 +1,7 @@
+import { nanoid } from 'nanoid'
+import { Delete, Edit } from '../components/icons'
+import { option } from '../components/select'
+
 interface Todo {
   id: number
   title: string
@@ -75,5 +79,142 @@ export const categories: Category[] = [
   {
     id: 5,
     name: 'Category 5',
+  },
+]
+
+export const radioSelectOptions: option[] = [
+  {
+    title: 'Option 1',
+    value: 'Option 1',
+    id: nanoid(5),
+    name: 'radio-sample',
+  },
+  {
+    title: 'Option 2',
+    value: 'Option 2',
+    id: nanoid(5),
+    name: 'radio-sample',
+  },
+  {
+    title: 'Option 3',
+    value: 'Option 3',
+    id: nanoid(5),
+    name: 'radio-sample',
+  },
+  {
+    title: 'Option 4',
+    value: 'Option 4',
+    id: nanoid(5),
+    name: 'radio-sample',
+  },
+  {
+    title: 'Option 5',
+    value: 'Option 5',
+    id: nanoid(5),
+    name: 'radio-sample',
+  },
+]
+
+export const checkboxSelectOptions: option[] = [
+  {
+    title: 'Option 1',
+    value: 'Option 1',
+    id: nanoid(5),
+    name: 'checkbox-sample',
+  },
+  {
+    title: 'Option 2',
+    value: 'Option 2',
+    id: nanoid(5),
+    name: 'checkbox-sample',
+  },
+  {
+    title: 'Option 3',
+    value: 'Option 3',
+    id: nanoid(5),
+    name: 'checkbox-sample',
+  },
+  {
+    title: 'Option 4',
+    value: 'Option 4',
+    id: nanoid(5),
+    name: 'checkbox-sample',
+  },
+  {
+    title: 'Option 5',
+    value: 'Option 5',
+    id: nanoid(5),
+    name: 'checkbox-sample',
+  },
+]
+
+export const normalSelectOptions: option[] = [
+  {
+    title: 'Option 1',
+    value: 'Option 1',
+    id: nanoid(5),
+    name: 'normal-sample',
+  },
+  {
+    title: 'Option 2',
+    value: 'Option 2',
+    id: nanoid(5),
+    name: 'normal-sample',
+  },
+  {
+    title: 'Option 3',
+    value: 'Option 3',
+    id: nanoid(5),
+    name: 'normal-sample',
+  },
+  {
+    title: 'Option 4',
+    value: 'Option 4',
+    id: nanoid(5),
+    name: 'normal-sample',
+  },
+  {
+    title: 'Option 5',
+    value: 'Option 5',
+    id: nanoid(5),
+    name: 'normal-sample',
+  },
+]
+
+export const normalWithIconSelectOptions: option[] = [
+  {
+    title: 'Option 1',
+    value: 'Option 1',
+    id: nanoid(5),
+    name: 'normal-sample',
+    Icon: Edit,
+  },
+  {
+    title: 'Option 2',
+    value: 'Option 2',
+    id: nanoid(5),
+    name: 'normal-sample',
+    Icon: Delete,
+  },
+  {
+    title: 'Option 3',
+    value: 'Option 3',
+    id: nanoid(5),
+    name: 'normal-sample',
+    Icon: Edit,
+  },
+  {
+    title: 'Option 4',
+    value: 'Option 4',
+    id: nanoid(5),
+    name: 'normal-sample',
+    Icon: Delete,
+  },
+  {
+    title: 'Option 5',
+    value: 'Option 5',
+    id: nanoid(5),
+    name: 'normal-sample',
+    Icon: Edit,
   },
 ]

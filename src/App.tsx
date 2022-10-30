@@ -1,6 +1,7 @@
 import Button from './components/button'
-import DropdownMenu from './components/DropdownMenu'
+import Select from './components/select'
 import SplitButton from './components/SplitButton/Index'
+import { checkboxSelectOptions, normalSelectOptions, radioSelectOptions } from './data'
 
 function App() {
   const handlePrimaryClick = () => {
@@ -19,7 +20,9 @@ function App() {
       />
       <Button label={'Save'} handleButtonClick={handlePrimaryClick} />
 
-      <DropdownMenu/>
+      <Select options={normalSelectOptions} />
+      <Select options={checkboxSelectOptions} type="multi-checkbox" />
+      <Select options={radioSelectOptions} type="single-radio" />
     </>
   )
 }

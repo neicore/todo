@@ -1,11 +1,10 @@
+import { MouseEventHandler } from 'react'
 import style from './style.module.sass'
 
 interface Props {
   label: string
   type?: ButtonType
-  handleButtonClick: React.MouseEventHandler<
-    HTMLSpanElement | HTMLButtonElement
-  >
+  handleButtonClick: MouseEventHandler<HTMLSpanElement | HTMLButtonElement>
 }
 
 export enum ButtonType {
