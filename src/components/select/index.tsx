@@ -37,6 +37,7 @@ const Select = ({ options, type = 'single-normal' }: Props) => {
             id={id}
             name={name}
             handleClick={handleInputClick}
+            icon="none"
             key={id}
           />
         ))
@@ -53,6 +54,7 @@ const Select = ({ options, type = 'single-normal' }: Props) => {
               name={name}
               handleClick={handleNormalClick}
               key={id}
+              icon="left"
               IconLeft={IconLeft}
             />
           )
@@ -68,6 +70,7 @@ const Select = ({ options, type = 'single-normal' }: Props) => {
             id={id}
             name={name}
             handleClick={handleInputClick}
+            icon="none"
             key={id}
           />
         ))
@@ -84,6 +87,7 @@ const Select = ({ options, type = 'single-normal' }: Props) => {
               name={name}
               handleClick={handleNormalClick}
               key={id}
+              icon="both"
               IconLeft={IconLeft}
               IconRight={IconRight}
             />
@@ -102,6 +106,7 @@ const Select = ({ options, type = 'single-normal' }: Props) => {
               name={name}
               handleClick={handleNormalClick}
               key={id}
+              icon="left"
               IconLeft={IconLeft}
             />
           )

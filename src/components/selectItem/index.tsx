@@ -8,6 +8,7 @@ interface Props {
   id: string
   name: string
   handleClick: MouseEventHandler<any>
+  icon: 'none' | 'left' | 'right' | 'both'
   IconLeft?: ElementType
   IconRight?: ElementType
 }
@@ -19,68 +20,87 @@ const SelectItem = ({
   id,
   name,
   handleClick,
+  icon,
   IconLeft,
   IconRight,
 }: Props) => {
   const [checked, setChecked] = useState(false)
 
   if (type === 'normal') {
-    let normalMenuItem
-    if (IconLeft && IconRight) {
-      normalMenuItem = (
-        <li
-          className={style.menu_item}
-          id={id}
-          value={value}
-          onClick={(e: any) => {
-            setChecked(!checked)
-            handleClick(e)
-          }}
-        >
-          <span className={style.menu_item_left}>
-            {<IconLeft />} {title}
-          </span>
-          {checked ? <IconRight /> : null}
-        </li>
-      )
-    } else if (IconLeft) {
-      normalMenuItem = (
-        <li
-          className={style.menu_item}
-          id={id}
-          onClick={handleClick}
-          value={value}
-        >
-          {<IconLeft />} {title}
-        </li>
-      )
-    } else if (IconRight) {
-      normalMenuItem = (
-        <li
-          className={style.menu_item}
-          id={id}
-          value={value}
-          onClick={(e: any) => {
-            setChecked(!checked)
-            handleClick(e)
-          }}
-        >
-          {title} {checked ? <IconRight /> : null}
-        </li>
-      )
-    } else {
-      normalMenuItem = (
-        <li
-          className={style.menu_item}
-          id={id}
-          onClick={handleClick}
-          value={value}
-        >
-          {title}
-        </li>
-      )
+    switch (icon) {
+      case 'none':
+        return (
+          <li
+            className={style.menu_item}
+            id={id}
+            onClick={handleClick}
+            value={value}
+          >
+            {title}
+          </li>
+        )
+
+      case 'left':
+        return (
+          <li
+            className={style.menu_item}
+            id={id}
+            onClick={handleClick}
+            value={value}
+          >
+            {IconLeft ? <IconLeft /> : null} {title}
+          </li>
+        )
+
+      case 'right':
+        return (
+          <li
+            className={style.menu_item}
+            id={id}
+            value={value}
+            onClick={(e: any) => {
+              setChecked(!checked)
+              if (checked === false) {
+                handleClick(e)
+              }
+            }}
+          >
+            {title} {checked ? IconRight ? <IconRight /> : null : null}
+          </li>
+        )
+
+      case 'both':
+        return (
+          <li
+            className={style.menu_item}
+            id={id}
+            value={value}
+            onClick={(e: any) => {
+              setChecked(!checked)
+              if (checked === false) {
+                handleClick(e)
+              }
+            }}
+          >
+            <span className={style.menu_item_left}>
+              {IconLeft ? <IconLeft /> : null} {title}
+            </span>
+            {checked ? IconRight ? <IconRight /> : null : null}
+          </li>
+        )
+
+      default:
+        return (
+          <li
+            className={style.menu_item}
+            id={id}
+            onClick={handleClick}
+            value={value}
+          >
+            {title}
+          </li>
+        )
     }
-    return normalMenuItem
   } else {
     return (
       <label className={`${style.menu_item} menu_item_check`} htmlFor={id}>
