@@ -5,7 +5,7 @@ export const useDetectOutsideClick = (callback: any) => {
 
   useEffect(() => {
     const handleClick = (event: any) => {
-      if (ref.current && !ref.current.contains(event.target)) {
+      if (ref.current && !ref.current?.contains(event.target)) {
         callback()
       }
     }
@@ -15,7 +15,7 @@ export const useDetectOutsideClick = (callback: any) => {
     return () => {
       document.removeEventListener('click', handleClick, true)
     }
-  }, [callback])
+  })
 
   return ref
 }

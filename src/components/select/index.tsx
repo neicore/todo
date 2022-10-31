@@ -1,7 +1,8 @@
-import { ElementType } from 'react'
+import { ElementType, useState } from 'react'
+import { useDetectOutsideClick } from '../../hooks'
 import Active from '../active'
 import CountBadge from '../CountBadge/CountBadge'
-import { ChevronDown } from '../icons'
+import { ChevronDown, ChevronUp } from '../icons'
 import SelectItem from '../selectItem'
 import style from './style.module.sass'
 
@@ -33,20 +34,31 @@ const Select = ({
   activeBeacon = false,
   TriggerIcon,
 }: Props) => {
+  const [opened, setOpened] = useState(false)
+
+  let ref = useDetectOutsideClick(() => {
+    setOpened(false)
+  })
+
   const handleNormalClick = (e: any) => {
     console.log(e.currentTarget.getAttribute('value'))
   }
+
   const handleInputClick = (e: any) => {
     if (e.target.checked) {
       console.log(e.target.value, e.target)
     }
   }
 
+  const handleTriggerClick = (e: any) => {
+    setOpened(!opened)
+  }
+
   const triggerComponent = () => {
     switch (triggerType) {
       case 'full':
         return (
-          <button className={style.trigger}>
+          <button className={style.trigger} onClick={handleTriggerClick}>
             <span className={style.trigger_left}>
               {TriggerIconLeft ? <TriggerIconLeft /> : null}
               {triggerTitle}
@@ -54,14 +66,14 @@ const Select = ({
 
             <span className={style.trigger_right}>
               {activeBeacon ? <Active /> : <CountBadge count={'20'} />}
-              {<ChevronDown />}
+              {opened ? <ChevronUp /> : <ChevronDown />}
             </span>
           </button>
         )
 
       case 'icon':
         return (
-          <button className={style.trigger_icon}>
+          <button className={style.trigger_icon} onClick={handleTriggerClick}>
             {TriggerIcon ? <TriggerIcon /> : null}
           </button>
         )
@@ -164,9 +176,11 @@ const Select = ({
   }
 
   return (
-    <div className={style.container}>
+    <div className={style.container} ref={ref}>
       {triggerComponent()}
-      <div className={style.options}>{optionsComponent()}</div>
+      {opened ? (
+        <div className={style.options}>{optionsComponent()}</div>
+      ) : null}
     </div>
   )
 }
