@@ -1,9 +1,17 @@
 import { ElementType } from 'react'
+import Active from '../active'
+import CountBadge from '../CountBadge/CountBadge'
 import SelectItem from '../selectItem'
 
 interface Props {
   options: option[]
   type?: 'single-radio' | 'single-normal' | 'multi-checkbox' | 'multi-normal'
+  triggerType?: 'full' | 'icon'
+  TriggerIconLeft?: ElementType
+  triggerTitle?: string
+  activeBeacon?: boolean
+  TriggerIconRight?: ElementType
+  TriggerIcon?: ElementType
 }
 
 export type option = {
@@ -15,13 +23,51 @@ export type option = {
   IconRight?: ElementType
 }
 
-const Select = ({ options, type = 'single-normal' }: Props) => {
+const Select = ({
+  options,
+  type = 'single-normal',
+  triggerType = 'full',
+  TriggerIconLeft,
+  triggerTitle,
+  activeBeacon = false,
+  TriggerIconRight,
+  TriggerIcon,
+}: Props) => {
   const handleNormalClick = (e: any) => {
     console.log(e.currentTarget.getAttribute('value'))
   }
   const handleInputClick = (e: any) => {
     if (e.target.checked) {
       console.log(e.target.value, e.target)
+    }
+  }
+
+  const triggerComponent = () => {
+    switch (triggerType) {
+      case 'full':
+        return (
+          <button className={'style.trigger'}>
+            <span className={'style.trigger_left'}>
+              {TriggerIconLeft ? <TriggerIconLeft /> : null}
+              {triggerTitle}
+            </span>
+
+            <span className={'style.trigger_right'}>
+              {activeBeacon ? <Active /> : <CountBadge count={'20'} />}
+              {TriggerIconRight ? <TriggerIconRight /> : null}
+            </span>
+          </button>
+        )
+
+      case 'icon':
+        return (
+          <button className={'style.trigger_icon'}>
+            {TriggerIcon ? <TriggerIcon /> : null}
+          </button>
+        )
+
+      default:
+        break
     }
   }
 
@@ -119,7 +165,7 @@ const Select = ({ options, type = 'single-normal' }: Props) => {
 
   return (
     <div>
-      <div>trigger</div>
+      {triggerComponent()}
       <div>{optionsComponent()}</div>
     </div>
   )

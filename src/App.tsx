@@ -1,4 +1,5 @@
 import Button from './components/button'
+import { ChevronDown, Sort } from './components/icons'
 import Select from './components/select'
 import SplitButton from './components/SplitButton/Index'
 import {
@@ -25,7 +26,13 @@ function App() {
       />
       <Button label={'Save'} handleButtonClick={handlePrimaryClick} />
 
-      <Select options={normalSelectOptions} />
+      <Select
+        options={normalSelectOptions}
+        TriggerIconLeft={Sort}
+        triggerTitle={'Sort'}
+        activeBeacon={true}
+        TriggerIconRight={ChevronDown}
+      />
       <Select options={normalWithIconSelectOptions} type="multi-normal" />
       <Select options={checkboxSelectOptions} type="multi-checkbox" />
       <Select options={radioSelectOptions} type="single-radio" />
