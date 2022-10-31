@@ -1,7 +1,9 @@
 import { ElementType } from 'react'
 import Active from '../active'
 import CountBadge from '../CountBadge/CountBadge'
+import { ChevronDown } from '../icons'
 import SelectItem from '../selectItem'
+import style from './style.module.sass'
 
 interface Props {
   options: option[]
@@ -10,7 +12,6 @@ interface Props {
   TriggerIconLeft?: ElementType
   triggerTitle?: string
   activeBeacon?: boolean
-  TriggerIconRight?: ElementType
   TriggerIcon?: ElementType
 }
 
@@ -30,7 +31,6 @@ const Select = ({
   TriggerIconLeft,
   triggerTitle,
   activeBeacon = false,
-  TriggerIconRight,
   TriggerIcon,
 }: Props) => {
   const handleNormalClick = (e: any) => {
@@ -46,22 +46,22 @@ const Select = ({
     switch (triggerType) {
       case 'full':
         return (
-          <button className={'style.trigger'}>
-            <span className={'style.trigger_left'}>
+          <button className={style.trigger}>
+            <span className={style.trigger_left}>
               {TriggerIconLeft ? <TriggerIconLeft /> : null}
               {triggerTitle}
             </span>
 
-            <span className={'style.trigger_right'}>
+            <span className={style.trigger_right}>
               {activeBeacon ? <Active /> : <CountBadge count={'20'} />}
-              {TriggerIconRight ? <TriggerIconRight /> : null}
+              {<ChevronDown />}
             </span>
           </button>
         )
 
       case 'icon':
         return (
-          <button className={'style.trigger_icon'}>
+          <button className={style.trigger_icon}>
             {TriggerIcon ? <TriggerIcon /> : null}
           </button>
         )
@@ -164,9 +164,9 @@ const Select = ({
   }
 
   return (
-    <div>
+    <div className={style.container}>
       {triggerComponent()}
-      <div>{optionsComponent()}</div>
+      <div className={style.options}>{optionsComponent()}</div>
     </div>
   )
 }

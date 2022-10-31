@@ -55,7 +55,7 @@ const SelectItem = ({
       case 'right':
         return (
           <li
-            className={style.menu_item}
+            className={`${style.menu_item} ${style.menu_item_right_icon}`}
             id={id}
             value={value}
             onClick={(e: any) => {
@@ -72,7 +72,7 @@ const SelectItem = ({
       case 'both':
         return (
           <li
-            className={style.menu_item}
+            className={`${style.menu_item} ${style.menu_item_right_icon}`}
             id={id}
             value={value}
             onClick={(e: any) => {

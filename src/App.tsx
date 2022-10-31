@@ -1,5 +1,5 @@
 import Button from './components/button'
-import { ChevronDown, Sort } from './components/icons'
+import { Edit, Sort } from './components/icons'
 import Select from './components/select'
 import SplitButton from './components/SplitButton/Index'
 import {
@@ -31,9 +31,13 @@ function App() {
         TriggerIconLeft={Sort}
         triggerTitle={'Sort'}
         activeBeacon={true}
-        TriggerIconRight={ChevronDown}
       />
-      <Select options={normalWithIconSelectOptions} type="multi-normal" />
+      <Select
+        options={normalWithIconSelectOptions}
+        type="multi-normal"
+        triggerType="icon"
+        TriggerIcon={Edit}
+      />
       <Select options={checkboxSelectOptions} type="multi-checkbox" />
       <Select options={radioSelectOptions} type="single-radio" />
     </>

@@ -1,13 +1,25 @@
 .menu_item
     display: flex
-    flex-direction: row
     align-items: center
     padding: 5px 10px
     gap: 10px
     border-radius: 5px
     font-size: 14px
-    width: fit-content
-    min-width: Fill (181px)
+    width: 100%
+    list-style: none
+
+    &_left
+        display: flex
+        align-items: center
+        gap: 5px
 
     &:hover
         background-color: #F3F4F6
+
+    &:_left
+        display: flex
+        align-items: center
+        gap: 10px
+
+.menu_item_right_icon
+    justify-content: space-between
