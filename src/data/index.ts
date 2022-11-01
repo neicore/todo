@@ -2,7 +2,7 @@ import { nanoid } from 'nanoid'
 import { Checkmark, Delete, Edit } from '../components/icons'
 import { option } from '../components/select'
 
-interface Todo {
+export interface Todo {
   id: number
   title: string
   description: string
@@ -79,6 +79,23 @@ export const categories: Category[] = [
   {
     id: 5,
     name: 'Category 5',
+  },
+]
+
+export const todoMenu: option[] = [
+  {
+    title: 'Edit',
+    value: 'Edit',
+    id: nanoid(5),
+    name: 'todo-menu',
+    IconLeft: Edit,
+  },
+  {
+    title: 'Delete',
+    value: 'Delete',
+    id: nanoid(5),
+    name: 'todo-menu',
+    IconLeft: Delete,
   },
 ]
 

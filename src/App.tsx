@@ -1,14 +1,17 @@
+import { ChangeEvent } from 'react'
 import Button from './components/button'
 import CategoryTag from './components/categoryTag'
 import { Edit, Sort } from './components/icons'
 import SearchBar from './components/searchBar'
 import Select from './components/select'
 import SplitButton from './components/SplitButton/Index'
+import TodoCard from './components/todoCard'
 import {
   checkboxSelectOptions,
   normalSelectOptions,
   normalWithIconSelectOptions,
   radioSelectOptions,
+  todos,
 } from './data'
 
 function App() {
@@ -48,7 +51,8 @@ function App() {
       <Select options={radioSelectOptions} type="single-radio" />
       <SearchBar handleInput={handleInput} />
 
-      <CategoryTag title="Personal Life" />
+      <CategoryTag title={1} />
+      <TodoCard todo={todos[0]} />
     </>
   )
 }
