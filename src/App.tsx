@@ -1,5 +1,6 @@
 import Button from './components/button'
 import { Edit, Sort } from './components/icons'
+import SearchBar from './components/searchBar'
 import Select from './components/select'
 import SplitButton from './components/SplitButton/Index'
 import {
@@ -15,6 +16,10 @@ function App() {
   }
   const handleSecondaryClick = () => {
     console.log('Secondary button clicked')
+  }
+
+  const handleInput = (e: any) => {
+    console.log(e.target.value)
   }
   return (
     <>
@@ -40,6 +45,7 @@ function App() {
       />
       <Select options={checkboxSelectOptions} type="multi-checkbox" />
       <Select options={radioSelectOptions} type="single-radio" />
+      <SearchBar handleInput={handleInput} />
     </>
   )
 }
