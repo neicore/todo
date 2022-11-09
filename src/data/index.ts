@@ -16,6 +16,60 @@ interface Category {
   name: string
 }
 
+export const sortOptions: option[] = [
+  {
+    title: 'Latest Created',
+    value: 'Latest Created',
+    id: nanoid(5),
+    name: 'sort-menu',
+  },
+  {
+    title: 'Oldest Created',
+    value: 'Oldest Created',
+    id: nanoid(5),
+    name: 'sort-menu',
+  },
+  {
+    title: 'Latest Due Date',
+    value: 'Latest Due Date',
+    id: nanoid(5),
+    name: 'sort-menu',
+  },
+  {
+    title: 'Oldest Due Date',
+    value: 'Oldest Due Date',
+    id: nanoid(5),
+    name: 'sort-menu',
+  },
+]
+
+export const filterOptions: option[] = [
+  {
+    title: 'Open',
+    value: 'Open',
+    id: nanoid(5),
+    name: 'filter-menu',
+  },
+  {
+    title: 'Past Due Date',
+    value: 'Past Due Date',
+    id: nanoid(5),
+    name: 'filter-menu',
+  },
+  {
+    title: 'No Due Date',
+    value: 'No Due Date',
+    id: nanoid(5),
+    name: 'filter-menu',
+  },
+  {
+    title: 'Done',
+    value: 'Done',
+    id: nanoid(5),
+    name: 'filter-menu',
+  },
+]
+
 export const todos: Todo[] = [
   {
     id: 1,
