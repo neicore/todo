@@ -1,6 +1,9 @@
 import Greeting from './components/greeting'
 import Header from './components/header'
+import TodoCard from './components/todoCard'
 import Toolbar from './components/toolbar'
+import { todos } from './data'
+import style from './app.module.sass'
 
 function App() {
   return (
@@ -8,6 +11,12 @@ function App() {
       <Header />
       <Greeting />
       <Toolbar />
+
+      <div className={style.todo_container}>
+        {todos.map((todo) => (
+          <TodoCard todo={todo} />
+        ))}
+      </div>
     </>
   )
 }
