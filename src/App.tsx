@@ -1,13 +1,9 @@
-import Logo from './components/logo'
-import ThemeToggle from './components/themeToggle'
+import Header from './components/header'
 
 function App() {
   return (
     <>
-      <header>
-        <Logo />
-        <ThemeToggle />
-      </header>
+      <Header />
     </>
   )
 }
