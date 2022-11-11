@@ -1,5 +1,5 @@
 import { ElementType, MouseEventHandler, useState } from 'react'
-import style from './style.module.sass'
+import style from './index.module.sass'
 
 interface Props {
   type: 'normal' | 'checkbox' | 'radio'

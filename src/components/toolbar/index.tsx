@@ -2,7 +2,7 @@ import { filterOptions, sortOptions } from '../../data'
 import { Calendar, Filter, Sort } from '../icons'
 import SearchBar from '../searchBar'
 import Select from '../select'
-import style from './style.module.sass'
+import style from './index.module.sass'
 
 const Toolbar = () => {
   const handleInput = (e: any) => {

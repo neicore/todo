@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Moon, Sun } from '../icons'
-import style from './style.module.sass'
+import style from './index.module.sass'
 
 const ThemeToggle = () => {
   const [darkmode, setDarkmode] = useState(false)

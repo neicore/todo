@@ -1,5 +1,5 @@
 import { LogoIcon } from '../icons'
-import style from './style.module.sass'
+import style from './index.module.sass'
 
 interface Props {
   type?: 'icon' | 'full'

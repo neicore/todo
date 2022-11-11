@@ -13,8 +13,8 @@ function App() {
       <Toolbar />
 
       <div className={style.todo_container}>
-        {todos.map((todo) => (
-          <TodoCard todo={todo} />
+        {todos.map((todo, index) => (
+          <TodoCard todo={todo} key={index} />
         ))}
       </div>
     </>

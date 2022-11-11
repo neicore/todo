@@ -1,10 +1,10 @@
 import { ElementType, useState } from 'react'
 import { useDetectOutsideClick } from '../../hooks'
 import Active from '../active'
-import CountBadge from '../CountBadge/CountBadge'
+import CountBadge from '../countBadge'
 import { ChevronDown, ChevronUp } from '../icons'
 import SelectItem from '../selectItem'
-import style from './style.module.sass'
+import style from './index.module.sass'
 
 interface Props {
   options: option[]

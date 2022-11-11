@@ -3,7 +3,7 @@ import { Todo, todoMenu } from '../../data'
 import CategoryTag from '../categoryTag'
 import { Menu } from '../icons'
 import Select from '../select'
-import style from './style.module.sass'
+import style from './index.module.sass'
 
 interface Props {
   handleChange?: ChangeEventHandler<HTMLInputElement>

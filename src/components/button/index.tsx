@@ -1,5 +1,5 @@
 import { MouseEventHandler } from 'react'
-import style from './style.module.sass'
+import style from './index.module.sass'
 
 interface Props {
   label: string

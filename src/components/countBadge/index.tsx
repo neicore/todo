@@ -1,4 +1,4 @@
-import styles from './CountBadge.module.sass'
+import styles from './index.module.sass'
 
 interface Props {
   count: string

@@ -1,4 +1,4 @@
-import style from './style.module.sass'
+import style from './index.module.sass'
 
 const Greeting = () => {
   return (

@@ -1,7 +1,7 @@
 import Logo from '../logo'
 import SplitButton from '../SplitButton/Index'
 import ThemeToggle from '../themeToggle'
-import style from './style.module.sass'
+import style from './index.module.sass'
 
 const Header = () => {
   const handlePrimary = () => {

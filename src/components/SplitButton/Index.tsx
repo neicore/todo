@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useDetectOutsideClick } from '../../hooks'
 import { ButtonType } from '../button'
 import { ChevronDown, ChevronUp } from '../icons'
-import style from './style.module.sass'
+import style from './index.module.sass'
 
 interface Props {
   primaryLabel: string
