@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from 'react'
+import { createContext, ReactNode, useEffect, useState } from 'react'
 
 interface Props {
   children: ReactNode
@@ -11,17 +11,19 @@ export const NewTodoContext = createContext(
 const NewTodoProvider = ({ children }: Props) => {
   const [openNewTodoModal, setOpenNewTodoModal] = useState(false)
 
-//   switch (localStorage.getItem('openNewTodoModal')) {
-//     case 'true':
-//       setOpenNewTodoModal(true)
-//       break
-//     case 'false':
-//       setOpenNewTodoModal(false)
-//       break
-//     default:
-//       setOpenNewTodoModal(false)
-//       break
-//   }
+  useEffect(() => {
+    switch (localStorage.getItem('openNewTodoModal')) {
+      case 'true':
+        setOpenNewTodoModal(true)
+        break
+      case 'false':
+        setOpenNewTodoModal(false)
+        break
+      default:
+        setOpenNewTodoModal(false)
+        break
+    }
+  }, [])
 
   return (
     <NewTodoContext.Provider value={{ openNewTodoModal, setOpenNewTodoModal }}>
