@@ -4,8 +4,12 @@ import TodoCard from './components/todoCard'
 import Toolbar from './components/toolbar'
 import { todos } from './data'
 import style from './app.module.sass'
+import { NewTodo } from './components/modal'
+import { useContext } from 'react'
+import { NewTodoContext } from './context/NewTodoProvider'
 
 function App() {
+  const { openNewTodoModal } = useContext(NewTodoContext)
   return (
     <>
       <Header />
@@ -17,6 +21,7 @@ function App() {
           <TodoCard todo={todo} key={index} />
         ))}
       </div>
+      {openNewTodoModal ? <NewTodo handleSubmit={() => {}} /> : null}
     </>
   )
 }

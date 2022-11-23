@@ -1,11 +1,15 @@
+import { useContext } from 'react'
+import { NewTodoContext } from '../../context/NewTodoProvider'
 import Logo from '../logo'
 import SplitButton from '../SplitButton/Index'
 import ThemeToggle from '../themeToggle'
 import style from './index.module.sass'
 
 const Header = () => {
+  const { setOpenNewTodoModal } = useContext(NewTodoContext)
+
   const handlePrimary = () => {
-    console.log('Hey Primary button')
+    setOpenNewTodoModal(true)
   }
   const handleSecondary = () => {
     console.log('Hey secondary button')
