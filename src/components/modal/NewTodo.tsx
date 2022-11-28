@@ -1,15 +1,13 @@
-import { MouseEventHandler, useContext } from 'react'
+import { useContext, useRef, useState } from 'react'
 import Modal from './Modal'
 import styles from './index.module.sass'
 import { NewTodoContext } from '../../context/NewTodoProvider'
 import { useDetectOutsideClick } from '../../hooks'
+import { Todo } from '../../data'
+import { nanoid } from 'nanoid'
 
-interface Props {
-  handleSubmit: MouseEventHandler<HTMLButtonElement>
-}
-
-const NewTodo = ({ handleSubmit }: Props) => {
-  const { setOpenNewTodoModal } = useContext(NewTodoContext)
+const NewTodo = () => {
+  const { setOpenNewTodoModal, todos, setTodos } = useContext(NewTodoContext)
 
   let ref = useDetectOutsideClick(() => {
     setOpenNewTodoModal(false)
@@ -19,21 +17,42 @@ const NewTodo = ({ handleSubmit }: Props) => {
     setOpenNewTodoModal(false)
   }
 
+  const titleRef = useRef<HTMLInputElement>(null)
+  const descriptionRef = useRef<HTMLTextAreaElement>(null)
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault()
+    setTodos([
+      ...todos,
+      {
+        id: nanoid(5),
+        title: titleRef.current?.value.trim(),
+        description: descriptionRef.current?.value.trim(),
+        category: 1,
+        dueDate: Date.now(),
+        isCompleted: false,
+      } as unknown as Todo,
+    ])
+    setOpenNewTodoModal(false)
+  }
+
   const newTodo = () => {
     return (
-      <form className={styles.newTodo} ref={ref}>
+      <div className={styles.newTodo} ref={ref}>
         <input
           type="text"
           name="new-todo"
           id="todo-title"
           placeholder="Todo title goes here"
           className={styles.newTodo_title}
+          ref={titleRef}
         />
         <textarea
           name="new-todo"
           id="todo-descripiton"
           placeholder="Todo description goes here...."
           className={styles.newTodo_description}
+          ref={descriptionRef}
         ></textarea>
 
         <div className={styles.newTodo_footer}>
@@ -51,7 +70,7 @@ const NewTodo = ({ handleSubmit }: Props) => {
             </button>
           </div>
         </div>
-      </form>
+      </div>
     )
   }
   return <Modal Child={newTodo} />

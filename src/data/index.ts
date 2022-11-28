@@ -3,7 +3,7 @@ import { Checkmark, Delete, Edit } from '../components/icons'
 import { option } from '../components/select'
 
 export interface Todo {
-  id: number
+  id: number | string
   title: string
   description: string
   category?: number

@@ -1,15 +1,22 @@
 import { createContext, ReactNode, useEffect, useState } from 'react'
+import { Todo } from '../data'
 
 interface Props {
   children: ReactNode
 }
 
-export const NewTodoContext = createContext(
-  {} as { openNewTodoModal: boolean; setOpenNewTodoModal: Function }
-)
+type NewTodoContextType = {
+  openNewTodoModal: boolean
+  setOpenNewTodoModal: Function
+  todos: Todo[]
+  setTodos: Function
+}
+
+export const NewTodoContext = createContext({} as NewTodoContextType)
 
 const NewTodoProvider = ({ children }: Props) => {
   const [openNewTodoModal, setOpenNewTodoModal] = useState(false)
+  const [todos, setTodos] = useState<Todo[]>([])
 
   useEffect(() => {
     switch (localStorage.getItem('openNewTodoModal')) {
@@ -23,10 +30,16 @@ const NewTodoProvider = ({ children }: Props) => {
         setOpenNewTodoModal(false)
         break
     }
+
+    if (localStorage.getItem('todos')) {
+      
+    }
   }, [])
 
   return (
-    <NewTodoContext.Provider value={{ openNewTodoModal, setOpenNewTodoModal }}>
+    <NewTodoContext.Provider
+      value={{ openNewTodoModal, setOpenNewTodoModal, todos, setTodos }}
+    >
       {children}
     </NewTodoContext.Provider>
   )
