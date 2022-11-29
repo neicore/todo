@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from 'react'
+import { useContext, useRef } from 'react'
 import Modal from './Modal'
 import styles from './index.module.sass'
 import { NewTodoContext } from '../../context/NewTodoProvider'
