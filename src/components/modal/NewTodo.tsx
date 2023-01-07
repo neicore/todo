@@ -69,7 +69,7 @@ const NewTodo = () => {
 
           <div className={styles.newTodo_footer_right}>
             <button onClick={handleCancel} className={styles.newTodo_cancel}>
-              close
+              cancel
             </button>
             <button onClick={handleSubmit} className={styles.newTodo_submit}>
               submit
