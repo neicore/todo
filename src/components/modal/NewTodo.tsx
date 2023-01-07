@@ -22,18 +22,24 @@ const NewTodo = () => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault()
-    setTodos([
-      ...todos,
-      {
-        id: nanoid(5),
-        title: titleRef.current?.value.trim(),
-        description: descriptionRef.current?.value.trim(),
-        category: 1,
-        dueDate: Date.now(),
-        isCompleted: false,
-      } as unknown as Todo,
-    ])
-    setOpenNewTodoModal(false)
+    if (
+      titleRef.current?.value.trim() !== '' &&
+      descriptionRef.current?.value.trim() !== ''
+    ) {
+      setTodos([
+        ...todos,
+        {
+          id: nanoid(5),
+          title: titleRef.current?.value.trim(),
+          description: descriptionRef.current?.value.trim(),
+          category: 1,
+          dueDate: Date.now(),
+          isCompleted: false,
+        } as unknown as Todo,
+      ])
+
+      setOpenNewTodoModal(false)
+    }
   }
 
   const newTodo = () => {
