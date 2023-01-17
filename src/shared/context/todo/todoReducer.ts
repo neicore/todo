@@ -7,20 +7,23 @@ export const todoReducer = (
   const { type, payload } = action
 
   switch (type) {
-    case 'CREATE':
+    case 'CREATE_TODO':
       return state
 
-    case 'EDIT':
+    case 'EDIT_TODO':
       return state
 
-    case 'DELETE':
+    case 'DELETE_TODO':
       return state
 
-    case 'SORT':
+    case 'SORT_TODO':
       return state
 
-    case 'FILTER':
+    case 'FILTER_TODO':
       return state
+
+    case 'HANDLE_MODAL':
+      return { ...state, modal: payload.modal }
 
     default:
       return state

@@ -1,5 +1,5 @@
 import { ElementType, useState } from 'react'
-import { useDetectOutsideClick } from '../../hooks'
+import { useDetectOutsideClick } from '../../shared/hooks'
 import Active from '../active'
 import CountBadge from '../countBadge'
 import { ChevronDown, ChevronUp } from '../icons'

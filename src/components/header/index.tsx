@@ -1,15 +1,14 @@
-import { useContext } from 'react'
-import { NewTodoContext } from '../../shared/context/TodoProvider'
+import { useTodoState } from '../../shared/context/todo/TodoState'
 import Logo from '../logo'
 import SplitButton from '../SplitButton/Index'
 import ThemeToggle from '../themeToggle'
 import style from './index.module.sass'
 
 const Header = () => {
-  const { setOpenNewTodoModal } = useContext(NewTodoContext)
+  const { dispatch } = useTodoState()
 
   const handlePrimary = () => {
-    setOpenNewTodoModal(true)
+    dispatch({ type: 'HANDLE_MODAL', payload: { modal: true } })
   }
   const handleSecondary = () => {
     console.log('Hey secondary button')

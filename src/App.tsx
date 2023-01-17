@@ -1,14 +1,12 @@
 import Greeting from './components/greeting'
 import Header from './components/header'
-import TodoCard from './components/todoCard'
 import Toolbar from './components/toolbar'
 import style from './app.module.sass'
 import { NewTodo } from './components/modal'
-import { useContext } from 'react'
-import { NewTodoContext } from './shared/context/TodoProvider'
+import { useTodoState } from './shared/context/todo/TodoState'
 
 function App() {
-  const { openNewTodoModal, todos } = useContext(NewTodoContext)
+  const { state } = useTodoState()
   return (
     <>
       <Header />
@@ -16,11 +14,11 @@ function App() {
       <Toolbar />
 
       <div className={style.todo_container}>
-        {todos.map((todo, index) => (
+        {/* {todos.map((todo, index) => (
           <TodoCard todo={todo} key={index} />
-        ))}
+        ))} */}
       </div>
-      {openNewTodoModal ? <NewTodo /> : null}
+      {state.modal ? <NewTodo /> : null}
     </>
   )
 }

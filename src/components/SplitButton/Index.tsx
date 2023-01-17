@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useDetectOutsideClick } from '../../hooks'
+import { useDetectOutsideClick } from '../../shared/hooks'
 import { ButtonType } from '../button'
 import { ChevronDown, ChevronUp } from '../icons'
 import style from './index.module.sass'

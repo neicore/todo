@@ -18,6 +18,7 @@ export interface Category {
 export interface TodoStateType {
   todos?: Todo[]
   categories?: Category[]
+  modal?: boolean
 }
 
 export interface TodoStateProps {
@@ -25,6 +26,12 @@ export interface TodoStateProps {
 }
 
 export interface TodoReducerActions {
-  type: 'CREATE' | 'EDIT' | 'DELETE' | 'SORT' | 'FILTER'
+  type:
+    | 'CREATE_TODO'
+    | 'EDIT_TODO'
+    | 'DELETE_TODO'
+    | 'SORT_TODO'
+    | 'FILTER_TODO'
+    | 'HANDLE_MODAL'
   payload: TodoStateType
 }

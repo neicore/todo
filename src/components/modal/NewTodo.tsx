@@ -1,20 +1,28 @@
-import { useContext, useRef } from 'react'
+import { useRef } from 'react'
 import Modal from './Modal'
 import styles from './index.module.sass'
-import { TodoContext } from '../../shared/context/TodoProvider'
-import { useDetectOutsideClick } from '../../hooks'
-import { Todo } from '../../shared/data'
-import { nanoid } from 'nanoid'
+import { useDetectOutsideClick } from '../../shared/hooks'
+import { useTodoState } from '../../shared/context/todo/TodoState'
 
 const NewTodo = () => {
-  const { setOpenNewTodoModal, todos, setTodos } = useContext(TodoContext)
+  const { dispatch } = useTodoState()
 
   let ref = useDetectOutsideClick(() => {
-    setOpenNewTodoModal(false)
+    dispatch({
+      type: 'HANDLE_MODAL',
+      payload: {
+        modal: false,
+      },
+    })
   })
 
   const handleCancel = () => {
-    setOpenNewTodoModal(false)
+    dispatch({
+      type: 'HANDLE_MODAL',
+      payload: {
+        modal: false,
+      },
+    })
   }
 
   const titleRef = useRef<HTMLInputElement>(null)
@@ -26,19 +34,24 @@ const NewTodo = () => {
       titleRef.current?.value.trim() !== '' &&
       descriptionRef.current?.value.trim() !== ''
     ) {
-      setTodos([
-        ...todos,
-        {
-          id: nanoid(5),
-          title: titleRef.current?.value.trim(),
-          description: descriptionRef.current?.value.trim(),
-          category: 1,
-          dueDate: Date.now(),
-          isCompleted: false,
-        } as unknown as Todo,
-      ])
+      // setTodos([
+      //   ...todos,
+      //   {
+      //     id: nanoid(5),
+      //     title: titleRef.current?.value.trim(),
+      //     description: descriptionRef.current?.value.trim(),
+      //     category: 1,
+      //     dueDate: Date.now(),
+      //     isCompleted: false,
+      //   } as unknown as Todo,
+      // ])
 
-      setOpenNewTodoModal(false)
+      dispatch({
+        type: 'HANDLE_MODAL',
+        payload: {
+          modal: false,
+        },
+      })
     }
   }
 
