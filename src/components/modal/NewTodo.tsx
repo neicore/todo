@@ -1,13 +1,13 @@
 import { useContext, useRef } from 'react'
 import Modal from './Modal'
 import styles from './index.module.sass'
-import { NewTodoContext } from '../../context/NewTodoProvider'
+import { TodoContext } from '../../shared/context/TodoProvider'
 import { useDetectOutsideClick } from '../../hooks'
-import { Todo } from '../../data'
+import { Todo } from '../../shared/data'
 import { nanoid } from 'nanoid'
 
 const NewTodo = () => {
-  const { setOpenNewTodoModal, todos, setTodos } = useContext(NewTodoContext)
+  const { setOpenNewTodoModal, todos, setTodos } = useContext(TodoContext)
 
   let ref = useDetectOutsideClick(() => {
     setOpenNewTodoModal(false)

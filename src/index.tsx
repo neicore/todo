@@ -2,13 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.sass'
 import App from './App'
-import NewTodoProvider from './context/NewTodoProvider'
+import TodoState from './shared/context/todo/TodoState'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
-    <NewTodoProvider>
+    <TodoState>
       <App />
-    </NewTodoProvider>
+    </TodoState>
   </React.StrictMode>
 )

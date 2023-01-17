@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { NewTodoContext } from '../../context/NewTodoProvider'
+import { NewTodoContext } from '../../shared/context/TodoProvider'
 import Logo from '../logo'
 import SplitButton from '../SplitButton/Index'
 import ThemeToggle from '../themeToggle'

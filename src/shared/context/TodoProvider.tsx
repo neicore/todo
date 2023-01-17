@@ -5,14 +5,14 @@ interface Props {
   children: ReactNode
 }
 
-type NewTodoContextType = {
+type TodoContextType = {
   openNewTodoModal: boolean
   setOpenNewTodoModal: Function
   todos: Todo[]
   setTodos: Function
 }
 
-export const NewTodoContext = createContext({} as NewTodoContextType)
+export const TodoContext = createContext({} as TodoContextType)
 
 const NewTodoProvider = ({ children }: Props) => {
   const [openNewTodoModal, setOpenNewTodoModal] = useState(false)
@@ -30,18 +30,20 @@ const NewTodoProvider = ({ children }: Props) => {
         setOpenNewTodoModal(false)
         break
     }
+  }, [])
 
+  useEffect(() => {
+    const todosFromLocal = localStorage.getItem('todos')
     if (localStorage.getItem('todos')) {
-      
     }
   }, [])
 
   return (
-    <NewTodoContext.Provider
+    <TodoContext.Provider
       value={{ openNewTodoModal, setOpenNewTodoModal, todos, setTodos }}
     >
       {children}
-    </NewTodoContext.Provider>
+    </TodoContext.Provider>
   )
 }
 

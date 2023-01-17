@@ -5,7 +5,7 @@ import Toolbar from './components/toolbar'
 import style from './app.module.sass'
 import { NewTodo } from './components/modal'
 import { useContext } from 'react'
-import { NewTodoContext } from './context/NewTodoProvider'
+import { NewTodoContext } from './shared/context/TodoProvider'
 
 function App() {
   const { openNewTodoModal, todos } = useContext(NewTodoContext)
@@ -20,7 +20,7 @@ function App() {
           <TodoCard todo={todo} key={index} />
         ))}
       </div>
-      {openNewTodoModal ? <NewTodo/> : null}
+      {openNewTodoModal ? <NewTodo /> : null}
     </>
   )
 }

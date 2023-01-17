@@ -1,5 +1,5 @@
 import { ChangeEventHandler } from 'react'
-import { Todo, todoMenu } from '../../data'
+import { Todo, todoMenu } from '../../shared/data'
 import CategoryTag from '../categoryTag'
 import { Menu } from '../icons'
 import Select from '../select'

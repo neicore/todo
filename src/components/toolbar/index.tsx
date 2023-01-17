@@ -1,4 +1,4 @@
-import { filterOptions, sortOptions } from '../../data'
+import { filterOptions, sortOptions } from '../../shared/data'
 import { Calendar, Filter, Sort } from '../icons'
 import SearchBar from '../searchBar'
 import Select from '../select'

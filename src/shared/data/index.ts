@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid'
-import { Checkmark, Delete, Edit } from '../components/icons'
-import { option } from '../components/select'
+import { Checkmark, Delete, Edit } from '../../components/icons'
+import { option } from '../../components/select'
 
 export interface Todo {
   id: number | string
