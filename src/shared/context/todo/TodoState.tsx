@@ -10,8 +10,8 @@ const TodoState = ({ children }: TodoStateProps) => {
   const initialState: TodoStateType = {
     todos: [],
     categories: [],
-    modal: false,
-  };
+    modal: { child: null },
+  }
 
   const [state, dispatch] = useReducer(todoReducer, initialState)
 

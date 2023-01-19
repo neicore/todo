@@ -1,17 +1,17 @@
 import { useRef } from 'react'
-import Modal from './Modal'
 import styles from './index.module.sass'
 import { useDetectOutsideClick } from '../../shared/hooks'
 import { useTodoState } from '../../shared/context/todo/TodoState'
+import Select from '../select'
 
-const NewTodo = () => {
-  const { dispatch } = useTodoState()
+const TodoForm = () => {
+  const { state, dispatch } = useTodoState()
 
   let ref = useDetectOutsideClick(() => {
     dispatch({
       type: 'HANDLE_MODAL',
       payload: {
-        modal: false,
+        modal: { child: null },
       },
     })
   })
@@ -20,7 +20,7 @@ const NewTodo = () => {
     dispatch({
       type: 'HANDLE_MODAL',
       payload: {
-        modal: false,
+        modal: { child: null },
       },
     })
   }
@@ -49,49 +49,49 @@ const NewTodo = () => {
       dispatch({
         type: 'HANDLE_MODAL',
         payload: {
-          modal: false,
+          modal: { child: null },
         },
       })
     }
   }
 
-  const newTodo = () => {
-    return (
-      <div className={styles.newTodo} ref={ref}>
-        <input
-          type="text"
-          name="new-todo"
-          id="todo-title"
-          placeholder="Todo title goes here"
-          className={styles.newTodo_title}
-          ref={titleRef}
-        />
-        <textarea
-          name="new-todo"
-          id="todo-descripiton"
-          placeholder="Todo description goes here...."
-          className={styles.newTodo_description}
-          ref={descriptionRef}
-        ></textarea>
+  return (
+    <div className={styles.newTodo} ref={ref}>
+      <input
+        type="text"
+        name="new-todo"
+        id="todo-title"
+        placeholder="Todo title goes here"
+        className={styles.newTodo_title}
+        ref={titleRef}
+      />
+      <textarea
+        name="new-todo"
+        id="todo-descripiton"
+        placeholder="Todo description goes here...."
+        className={styles.newTodo_description}
+        ref={descriptionRef}
+      ></textarea>
 
-        <div className={styles.newTodo_footer}>
-          <div className={styles.newTodo_footer_left}>
-            <span>due date</span>
-            <span>category</span>
-          </div>
+      <div className={styles.newTodo_footer}>
+        <div className={styles.newTodo_footer_left}>
+          <span>due date</span>
+          <Select
+            options={state.categories ? state.categories : []}
+            triggerTitle={'Category'}
+          />
+        </div>
 
-          <div className={styles.newTodo_footer_right}>
-            <button onClick={handleCancel} className={styles.newTodo_cancel}>
-              close
-            </button>
-            <button onClick={handleSubmit} className={styles.newTodo_submit}>
-              submit
-            </button>
-          </div>
+        <div className={styles.newTodo_footer_right}>
+          <button onClick={handleCancel} className={styles.newTodo_cancel}>
+            close
+          </button>
+          <button onClick={handleSubmit} className={styles.newTodo_submit}>
+            submit
+          </button>
         </div>
       </div>
-    )
-  }
-  return <Modal Child={newTodo} />
+    </div>
+  )
 }
-export default NewTodo
+export default TodoForm

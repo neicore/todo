@@ -13,12 +13,16 @@ export interface Todo {
 export interface Category {
   id: string
   name: string
+  title: string
+  value: string
 }
 
 export interface TodoStateType {
   todos?: Todo[]
   categories?: Category[]
-  modal?: boolean
+  modal?: {
+    child: ReactNode
+  }
 }
 
 export interface TodoStateProps {

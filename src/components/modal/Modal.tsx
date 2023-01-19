@@ -1,11 +1,11 @@
-import { ElementType } from 'react'
+import { ReactNode } from 'react'
 import styles from './index.module.sass'
 
 interface Props {
-  Child: ElementType
+  child: ReactNode
 }
 
-const Modal = ({ Child }: Props) => {
-  return <section className={styles.container}>{<Child />}</section>
+const Modal = ({ child }: Props) => {
+  return <section className={styles.container}>{child}</section>
 }
 export default Modal

@@ -23,7 +23,7 @@ export const todoReducer = (
       return state
 
     case 'HANDLE_MODAL':
-      return { ...state, modal: payload.modal }
+      return { ...state, modal: { child: payload.modal?.child } }
 
     default:
       return state

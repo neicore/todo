@@ -1,5 +1,7 @@
 import { useTodoState } from '../../shared/context/todo/TodoState'
 import Logo from '../logo'
+import CategoryForm from '../modal/NewCategory'
+import TodoForm from '../modal/NewTodo'
 import SplitButton from '../SplitButton/Index'
 import ThemeToggle from '../themeToggle'
 import style from './index.module.sass'
@@ -8,10 +10,16 @@ const Header = () => {
   const { dispatch } = useTodoState()
 
   const handlePrimary = () => {
-    dispatch({ type: 'HANDLE_MODAL', payload: { modal: true } })
+    dispatch({
+      type: 'HANDLE_MODAL',
+      payload: { modal: { child: <TodoForm /> } },
+    })
   }
   const handleSecondary = () => {
-    console.log('Hey secondary button')
+    dispatch({
+      type: 'HANDLE_MODAL',
+      payload: { modal: { child: <CategoryForm /> } },
+    })
   }
   return (
     <header className={style.header}>
