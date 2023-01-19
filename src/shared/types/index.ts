@@ -37,5 +37,6 @@ export interface TodoReducerActions {
     | 'SORT_TODO'
     | 'FILTER_TODO'
     | 'HANDLE_MODAL'
+    | 'CREATE_CATEGORY'
   payload: TodoStateType
 }

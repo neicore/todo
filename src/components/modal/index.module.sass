@@ -9,7 +9,7 @@
     align-items: center
     justify-content: center
 
-    .newTodo
+    .todo_form
         width: 70%
         padding: 20px
         border: 1px solid #F3F4F6
@@ -60,15 +60,16 @@
                 padding: 0px
                 gap: 10px
 
-                .newTodo_cancel
+                .todo_form_cancel
                     font-size: 14px
                     color: #6B7280
+                    background: #fff
                     border: 1px solid #D1D5DB
                     border-radius: 5px
                     outline: none
                     padding: 5px 20px 5px 20px
 
-                .newTodo_submit
+                .todo_form_submit
                     font-size: 14px
                     background: #C026D3
                     border-radius: 5px
@@ -76,3 +77,24 @@
                     outline: none
                     color: #fff
                     padding: 5px 20px 5px 20px
+
+    .category_form
+        padding: 30px
+        background: #FFFFFF
+        border-radius: 7px
+
+        &_input
+            padding: 10px
+            border: 1px solid #6B7280
+            border-radius: 5px
+            width: 320px
+
+        &_char_count
+            font-size: 14px
+            color: #9CA3AF
+            margin-top: 5px
+            margin-bottom: 20px
+            text-align: right
+
+        &_char_count_max
+            color: red

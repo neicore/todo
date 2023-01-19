@@ -1,4 +1,4 @@
-import NewTodo from './NewTodo'
-import NewCategory from './NewCategory'
+import NewTodo from './TodoForm'
+import NewCategory from './CategoryForm'
 
 export { NewTodo, NewCategory }

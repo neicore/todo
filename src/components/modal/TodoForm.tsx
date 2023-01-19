@@ -56,25 +56,25 @@ const TodoForm = () => {
   }
 
   return (
-    <div className={styles.newTodo} ref={ref}>
+    <div className={styles.todo_form} ref={ref}>
       <input
         type="text"
         name="new-todo"
         id="todo-title"
         placeholder="Todo title goes here"
-        className={styles.newTodo_title}
+        className={styles.todo_form_title}
         ref={titleRef}
       />
       <textarea
         name="new-todo"
         id="todo-descripiton"
         placeholder="Todo description goes here...."
-        className={styles.newTodo_description}
+        className={styles.todo_form_description}
         ref={descriptionRef}
       ></textarea>
 
-      <div className={styles.newTodo_footer}>
-        <div className={styles.newTodo_footer_left}>
+      <div className={styles.todo_form_footer}>
+        <div className={styles.todo_form_footer_left}>
           <span>due date</span>
           <Select
             options={state.categories ? state.categories : []}
@@ -82,11 +82,11 @@ const TodoForm = () => {
           />
         </div>
 
-        <div className={styles.newTodo_footer_right}>
-          <button onClick={handleCancel} className={styles.newTodo_cancel}>
+        <div className={styles.todo_form_footer_right}>
+          <button onClick={handleCancel} className={styles.todo_form_cancel}>
             close
           </button>
-          <button onClick={handleSubmit} className={styles.newTodo_submit}>
+          <button onClick={handleSubmit} className={styles.todo_form_submit}>
             submit
           </button>
         </div>
