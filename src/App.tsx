@@ -9,7 +9,12 @@ import TodoCard from './components/todoCard'
 function App() {
   const { state } = useTodoState()
   return (
-    <>
+    <div
+      style={{
+        height: state.modal?.child ? '100vh' : undefined,
+        overflow: state.modal?.child ? 'hidden' : undefined,
+      }}
+    >
       <Header />
       <Greeting />
       <Toolbar />
@@ -20,7 +25,7 @@ function App() {
         ))}
       </div>
       {state.modal?.child ? <Modal child={state.modal.child} /> : null}
-    </>
+    </div>
   )
 }
 
