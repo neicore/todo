@@ -1,17 +1,11 @@
-import { ChangeEventHandler } from 'react'
 import { todoMenu } from '../../shared/data'
-import { Todo } from '../../shared/types'
+import { TodoCardProps } from '../../shared/types'
 import CategoryTag from '../categoryTag'
 import { Menu } from '../icons'
 import Select from '../select'
 import style from './index.module.sass'
 
-interface Props {
-  handleChange?: ChangeEventHandler<HTMLInputElement>
-  todo: Todo
-}
-
-const TodoCard = ({ handleChange, todo }: Props) => {
+const TodoCard = ({ handleChange, todo }: TodoCardProps) => {
   return (
     <div className={style.todo}>
       <input
@@ -32,7 +26,7 @@ const TodoCard = ({ handleChange, todo }: Props) => {
             options={todoMenu}
             type="single-normal"
             triggerType="icon"
-            TriggerIcon={Menu}
+            TriggerIcon={<Menu />}
           />
         </div>
 

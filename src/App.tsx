@@ -3,7 +3,7 @@ import Header from './components/header'
 import Toolbar from './components/toolbar'
 import style from './app.module.sass'
 import { useTodoState } from './shared/context/todo/TodoState'
-import Modal from './components/modal/Modal'
+import { Modal } from './components/modal'
 import TodoCard from './components/todoCard'
 
 function App() {

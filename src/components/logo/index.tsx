@@ -1,11 +1,8 @@
+import { LogoProps } from '../../shared/types'
 import { LogoIcon } from '../icons'
 import style from './index.module.sass'
 
-interface Props {
-  type?: 'icon' | 'full'
-}
-
-const Logo = ({ type = 'full' }: Props) => {
+const Logo = ({ type = 'full' }: LogoProps) => {
   switch (type) {
     case 'icon':
       return <LogoIcon />

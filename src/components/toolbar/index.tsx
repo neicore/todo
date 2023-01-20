@@ -16,18 +16,18 @@ const Toolbar = () => {
         <Select
           options={sortOptions}
           type="single-radio"
-          TriggerIconLeft={Sort}
+          TriggerIconLeft={<Sort />}
           triggerTitle={'Sort'}
         />
         <Select
           options={filterOptions}
           type="multi-checkbox"
-          TriggerIconLeft={Filter}
+          TriggerIconLeft={<Filter />}
           triggerTitle={'Filters'}
         />
         <Select
           options={[]}
-          TriggerIconLeft={Calendar}
+          TriggerIconLeft={<Calendar />}
           triggerTitle={'Pick a date'}
           type={'date'}
           right

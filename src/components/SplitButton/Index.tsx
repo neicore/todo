@@ -1,16 +1,8 @@
 import { useState } from 'react'
 import { useDetectOutsideClick } from '../../shared/hooks'
-import { ButtonType } from '../button'
+import { SplitButtonProps } from '../../shared/types'
 import { ChevronDown, ChevronUp } from '../icons'
 import style from './index.module.sass'
-
-interface Props {
-  primaryLabel: string
-  secondaryLabel: string
-  type?: ButtonType
-  handlePrimaryClick: React.MouseEventHandler<HTMLButtonElement>
-  handleSecondaryClick: React.MouseEventHandler<HTMLButtonElement>
-}
 
 const SplitButton = ({
   primaryLabel,
@@ -18,7 +10,7 @@ const SplitButton = ({
   type,
   handlePrimaryClick,
   handleSecondaryClick,
-}: Props) => {
+}: SplitButtonProps) => {
   const [showSecondary, setShowSecondary] = useState(false)
 
   const handleIconClick = () => {

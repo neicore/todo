@@ -1,11 +1,8 @@
+import { SearchBarProps } from '../../shared/types'
 import { Search } from '../icons'
 import style from './index.module.sass'
 
-interface Props {
-  handleInput: any
-}
-
-const SearchBar = ({ handleInput }: Props) => {
+const SearchBar = ({ handleInput }: SearchBarProps) => {
   return (
     <div className={style.search_bar}>
       <Search />

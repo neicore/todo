@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ChangeEventHandler, MouseEventHandler, ReactNode } from 'react'
 
 export interface Todo {
   id: string
@@ -46,4 +46,90 @@ export interface TodoReducerActions {
     | 'SELECT'
     | 'PICK_DATE'
   payload: TodoStateType
+}
+
+export interface SelectProps {
+  options: Option[]
+  type?:
+    | 'single-radio'
+    | 'single-normal'
+    | 'multi-checkbox'
+    | 'multi-normal'
+    | 'date'
+  triggerType?: 'full' | 'icon'
+  TriggerIconLeft?: ReactNode
+  triggerTitle?: string
+  activeBeacon?: boolean
+  TriggerIcon?: ReactNode
+  bottom?: boolean
+  right?: boolean
+  top?: boolean
+  left?: boolean
+  startDate?: Date
+  endDate?: Date
+}
+
+export interface Option {
+  title: string
+  value: string
+  id: string
+  name: string
+  IconLeft?: ReactNode
+  IconRight?: ReactNode
+}
+
+export interface SelectItemProps {
+  type: 'normal' | 'checkbox' | 'radio'
+  title: string
+  value: string
+  id: string
+  name: string
+  handleClick: MouseEventHandler<any>
+  icon: 'none' | 'left' | 'right' | 'both'
+  IconLeft?: ReactNode
+  IconRight?: ReactNode
+}
+
+export interface ButtonProps {
+  label: string
+  type?: ButtonType
+  handleButtonClick: MouseEventHandler<HTMLSpanElement | HTMLButtonElement>
+}
+
+export enum ButtonType {
+  submit = 'submit',
+  reset = 'reset',
+}
+
+export interface CategoryProps {
+  title: string
+}
+
+export interface CountBadgeProps {
+  count: string
+}
+
+export interface SplitButtonProps {
+  primaryLabel: string
+  secondaryLabel: string
+  type?: ButtonType
+  handlePrimaryClick: React.MouseEventHandler<HTMLButtonElement>
+  handleSecondaryClick: React.MouseEventHandler<HTMLButtonElement>
+}
+
+export interface LogoProps {
+  type?: 'icon' | 'full'
+}
+
+export interface ModalProps {
+  child: ReactNode
+}
+
+export interface SearchBarProps {
+  handleInput: any
+}
+
+export interface TodoCardProps {
+  handleChange?: ChangeEventHandler<HTMLInputElement>
+  todo: Todo
 }

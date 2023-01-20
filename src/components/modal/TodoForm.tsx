@@ -86,7 +86,7 @@ const TodoForm = () => {
         <div className={styles.todo_form_footer_left}>
           <Select
             options={[]}
-            TriggerIconLeft={Calendar}
+            TriggerIconLeft={<Calendar />}
             triggerTitle={state.pickDate ? state.pickDate : 'Pick a date'}
             type={'date'}
             bottom

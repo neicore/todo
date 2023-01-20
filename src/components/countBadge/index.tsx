@@ -1,10 +1,7 @@
+import { CountBadgeProps } from '../../shared/types'
 import styles from './index.module.sass'
 
-interface Props {
-  count: string
-}
-
-const CountBadge = ({ count }: Props) => {
+const CountBadge = ({ count }: CountBadgeProps) => {
   return <span className={styles.badge}>{count}</span>
 }
 export default CountBadge

@@ -1,13 +1,8 @@
 import { nanoid } from 'nanoid'
 import { Checkmark, Delete, Edit } from '../../components/icons'
-import { option } from '../../components/select'
+import { Option } from '../types'
 
-interface Category {
-  id: number
-  name: string
-}
-
-export const sortOptions: option[] = [
+export const sortOptions: Option[] = [
   {
     title: 'Latest Created',
     value: 'Latest Created',
@@ -34,7 +29,7 @@ export const sortOptions: option[] = [
   },
 ]
 
-export const filterOptions: option[] = [
+export const filterOptions: Option[] = [
   {
     title: 'Open',
     value: 'Open',
@@ -61,47 +56,24 @@ export const filterOptions: option[] = [
   },
 ]
 
-export const categories: Category[] = [
-  {
-    id: 1,
-    name: 'Category 1',
-  },
-  {
-    id: 2,
-    name: 'Category 2',
-  },
-  {
-    id: 3,
-    name: 'Category 3',
-  },
-  {
-    id: 4,
-    name: 'Category 4',
-  },
-  {
-    id: 5,
-    name: 'Category 5',
-  },
-]
-
-export const todoMenu: option[] = [
+export const todoMenu: Option[] = [
   {
     title: 'Edit',
     value: 'Edit',
     id: nanoid(5),
     name: 'todo-menu',
-    IconLeft: Edit,
+    IconLeft: <Edit />,
   },
   {
     title: 'Delete',
     value: 'Delete',
     id: nanoid(5),
     name: 'todo-menu',
-    IconLeft: Delete,
+    IconLeft: <Delete />,
   },
 ]
 
-export const radioSelectOptions: option[] = [
+export const radioSelectOptions: Option[] = [
   {
     title: 'Option 1',
     value: 'Option 1',
@@ -134,7 +106,7 @@ export const radioSelectOptions: option[] = [
   },
 ]
 
-export const checkboxSelectOptions: option[] = [
+export const checkboxSelectOptions: Option[] = [
   {
     title: 'Option 1',
     value: 'Option 1',
@@ -167,7 +139,7 @@ export const checkboxSelectOptions: option[] = [
   },
 ]
 
-export const normalSelectOptions: option[] = [
+export const normalSelectOptions: Option[] = [
   {
     title: 'Option 1',
     value: 'Option 1',
@@ -200,42 +172,42 @@ export const normalSelectOptions: option[] = [
   },
 ]
 
-export const normalWithIconSelectOptions: option[] = [
+export const normalWithIconSelectOptions: Option[] = [
   {
     title: 'Option 1',
     value: 'Option 1',
     id: nanoid(5),
     name: 'normal-sample',
-    IconLeft: Edit,
+    IconLeft: <Edit />,
   },
   {
     title: 'Option 2',
     value: 'Option 2',
     id: nanoid(5),
     name: 'normal-sample',
-    IconLeft: Delete,
+    IconLeft: <Delete />,
   },
   {
     title: 'Option 3',
     value: 'Option 3',
     id: nanoid(5),
     name: 'normal-sample',
-    IconLeft: Edit,
+    IconLeft: <Edit />,
   },
   {
     title: 'Option 4',
     value: 'Option 4',
     id: nanoid(5),
     name: 'normal-sample',
-    IconLeft: Delete,
-    IconRight: Checkmark,
+    IconLeft: <Delete />,
+    IconRight: <Checkmark />,
   },
   {
     title: 'Option 5',
     value: 'Option 5',
     id: nanoid(5),
     name: 'normal-sample',
-    IconLeft: Edit,
-    IconRight: Checkmark,
+    IconLeft: <Edit />,
+    IconRight: <Checkmark />,
   },
 ]

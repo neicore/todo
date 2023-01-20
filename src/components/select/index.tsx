@@ -1,45 +1,16 @@
 import { format } from 'date-fns'
-import { ElementType, useState } from 'react'
+import { useState } from 'react'
 //@ts-ignore
 import { DayPicker } from 'react-day-picker'
 import 'react-day-picker/dist/style.css'
 
 import { useTodoState } from '../../shared/context/todo/TodoState'
 import { useDetectOutsideClick } from '../../shared/hooks'
+import { SelectProps } from '../../shared/types'
 import Active from '../active'
 import { ChevronDown, ChevronUp } from '../icons'
 import SelectItem from '../selectItem'
 import style from './index.module.sass'
-
-interface Props {
-  options: option[]
-  type?:
-    | 'single-radio'
-    | 'single-normal'
-    | 'multi-checkbox'
-    | 'multi-normal'
-    | 'date'
-  triggerType?: 'full' | 'icon'
-  TriggerIconLeft?: ElementType
-  triggerTitle?: string
-  activeBeacon?: boolean
-  TriggerIcon?: ElementType
-  bottom?: boolean
-  right?: boolean
-  top?: boolean
-  left?: boolean
-  startDate?: Date
-  endDate?: Date
-}
-
-export type option = {
-  title: string
-  value: string
-  id: string
-  name: string
-  IconLeft?: ElementType
-  IconRight?: ElementType
-}
 
 const Select = ({
   options,
@@ -55,7 +26,7 @@ const Select = ({
   left,
   startDate,
   endDate,
-}: Props) => {
+}: SelectProps) => {
   const [opened, setOpened] = useState(false)
   const { dispatch } = useTodoState()
 
@@ -103,7 +74,7 @@ const Select = ({
         return (
           <button className={style.trigger} onClick={handleTriggerClick}>
             <span className={style.trigger_left}>
-              {TriggerIconLeft ? <TriggerIconLeft /> : null}
+              {TriggerIconLeft ? TriggerIconLeft : null}
               {triggerTitle}
             </span>
 
@@ -117,7 +88,7 @@ const Select = ({
       case 'icon':
         return (
           <button className={style.trigger_icon} onClick={handleTriggerClick}>
-            {TriggerIcon ? <TriggerIcon /> : null}
+            {TriggerIcon ? TriggerIcon : null}
           </button>
         )
 

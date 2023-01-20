@@ -1,10 +1,7 @@
+import { CategoryProps } from '../../shared/types'
 import style from './index.module.sass'
 
-interface Props {
-  title: string
-}
-
-const CategoryTag = ({ title }: Props) => {
+const CategoryTag = ({ title }: CategoryProps) => {
   return <span className={style.category_tag}>{title}</span>
 }
 export default CategoryTag

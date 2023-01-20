@@ -1,17 +1,6 @@
-import { ElementType, MouseEventHandler, useState } from 'react'
+import { useState } from 'react'
+import { SelectItemProps } from '../../shared/types'
 import style from './index.module.sass'
-
-interface Props {
-  type: 'normal' | 'checkbox' | 'radio'
-  title: string
-  value: string
-  id: string
-  name: string
-  handleClick: MouseEventHandler<any>
-  icon: 'none' | 'left' | 'right' | 'both'
-  IconLeft?: ElementType
-  IconRight?: ElementType
-}
 
 const SelectItem = ({
   type,
@@ -23,7 +12,7 @@ const SelectItem = ({
   icon,
   IconLeft,
   IconRight,
-}: Props) => {
+}: SelectItemProps) => {
   const [checked, setChecked] = useState(false)
 
   if (type === 'normal') {
@@ -48,7 +37,9 @@ const SelectItem = ({
             onClick={handleClick}
             value={value}
           >
-            {IconLeft ? <IconLeft /> : null} {title}
+            <>
+              {IconLeft ? { IconLeft } : null} {title}
+            </>
           </li>
         )
 
@@ -65,7 +56,7 @@ const SelectItem = ({
               }
             }}
           >
-            {title} {checked ? IconRight ? <IconRight /> : null : null}
+            {title} {checked ? (IconRight ? IconRight : null) : null}
           </li>
         )
 
@@ -83,9 +74,9 @@ const SelectItem = ({
             }}
           >
             <span className={style.menu_item_left}>
-              {IconLeft ? <IconLeft /> : null} {title}
+              {IconLeft ? IconLeft : null} {title}
             </span>
-            {checked ? IconRight ? <IconRight /> : null : null}
+            {checked ? (IconRight ? IconRight : null) : null}
           </li>
         )
 
