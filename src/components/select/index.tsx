@@ -1,4 +1,9 @@
+import { format } from 'date-fns'
 import { ElementType, useState } from 'react'
+//@ts-ignore
+import { DayPicker } from 'react-day-picker'
+import 'react-day-picker/dist/style.css'
+
 import { useTodoState } from '../../shared/context/todo/TodoState'
 import { useDetectOutsideClick } from '../../shared/hooks'
 import Active from '../active'
@@ -8,12 +13,23 @@ import style from './index.module.sass'
 
 interface Props {
   options: option[]
-  type?: 'single-radio' | 'single-normal' | 'multi-checkbox' | 'multi-normal'
+  type?:
+    | 'single-radio'
+    | 'single-normal'
+    | 'multi-checkbox'
+    | 'multi-normal'
+    | 'date'
   triggerType?: 'full' | 'icon'
   TriggerIconLeft?: ElementType
   triggerTitle?: string
   activeBeacon?: boolean
   TriggerIcon?: ElementType
+  bottom?: boolean
+  right?: boolean
+  top?: boolean
+  left?: boolean
+  startDate?: Date
+  endDate?: Date
 }
 
 export type option = {
@@ -33,9 +49,15 @@ const Select = ({
   triggerTitle,
   activeBeacon = false,
   TriggerIcon,
+  bottom,
+  right,
+  top,
+  left,
+  startDate,
+  endDate,
 }: Props) => {
   const [opened, setOpened] = useState(false)
-  const { state, dispatch } = useTodoState()
+  const { dispatch } = useTodoState()
 
   let ref = useDetectOutsideClick(() => {
     setOpened(false)
@@ -60,8 +82,19 @@ const Select = ({
     }
   }
 
-  const handleTriggerClick = (e: any) => {
+  const handleTriggerClick = () => {
     setOpened(!opened)
+  }
+
+  const handleDateSelect = (d: any) => {
+    dispatch({
+      type: 'PICK_DATE',
+      payload: {
+        pickDate: format(d, 'PP'),
+      },
+    })
+
+    setOpened(false)
   }
 
   const triggerComponent = () => {
@@ -94,10 +127,9 @@ const Select = ({
   }
 
   const optionsComponent = () => {
-    let returnComponent
     switch (type) {
       case 'single-radio':
-        returnComponent = options.map(({ title, value, id, name }) => (
+        return options.map(({ title, value, id, name }) => (
           <SelectItem
             type={'radio'}
             title={title}
@@ -109,28 +141,24 @@ const Select = ({
             key={id}
           />
         ))
-        break
 
       case 'single-normal':
-        returnComponent = options.map(
-          ({ title, value, id, name, IconLeft }) => (
-            <SelectItem
-              type={'normal'}
-              title={title}
-              value={value}
-              id={id}
-              name={name}
-              handleClick={() => handleNormalClick(id, title)}
-              key={id}
-              icon="left"
-              IconLeft={IconLeft}
-            />
-          )
-        )
-        break
+        return options.map(({ title, value, id, name, IconLeft }) => (
+          <SelectItem
+            type={'normal'}
+            title={title}
+            value={value}
+            id={id}
+            name={name}
+            handleClick={() => handleNormalClick(id, title)}
+            key={id}
+            icon="left"
+            IconLeft={IconLeft}
+          />
+        ))
 
       case 'multi-checkbox':
-        returnComponent = options.map(({ title, value, id, name }) => (
+        return options.map(({ title, value, id, name }) => (
           <SelectItem
             type={'checkbox'}
             title={title}
@@ -142,10 +170,9 @@ const Select = ({
             key={id}
           />
         ))
-        break
 
       case 'multi-normal':
-        returnComponent = options.map(
+        return options.map(
           ({ title, value, id, name, IconLeft, IconRight }) => (
             <SelectItem
               type={'normal'}
@@ -161,35 +188,50 @@ const Select = ({
             />
           )
         )
-        break
+
+      case 'date':
+        return (
+          <DayPicker
+            mode="single"
+            fromDate={startDate}
+            onSelect={(d: any) => {
+              handleDateSelect(d)
+            }}
+          />
+        )
 
       default:
-        returnComponent = options.map(
-          ({ title, value, id, name, IconLeft }) => (
-            <SelectItem
-              type={'normal'}
-              title={title}
-              value={value}
-              id={id}
-              name={name}
-              handleClick={() => handleNormalClick(id, title)}
-              key={id}
-              icon="left"
-              IconLeft={IconLeft}
-            />
-          )
-        )
-        break
+        return options.map(({ title, value, id, name, IconLeft }) => (
+          <SelectItem
+            type={'normal'}
+            title={title}
+            value={value}
+            id={id}
+            name={name}
+            handleClick={() => handleNormalClick(id, title)}
+            key={id}
+            icon="left"
+            IconLeft={IconLeft}
+          />
+        ))
     }
-
-    return returnComponent
   }
 
   return (
     <div className={style.container} ref={ref}>
       {triggerComponent()}
       {opened ? (
-        <div className={style.options}>{optionsComponent()}</div>
+        <div
+          className={style.options}
+          style={{
+            bottom: bottom ? '60px' : undefined,
+            right: right ? '0px' : undefined,
+            top: top ? '0px' : undefined,
+            left: left ? '0px' : undefined,
+          }}
+        >
+          {optionsComponent()}
+        </div>
       ) : null}
     </div>
   )

@@ -27,6 +27,7 @@ export interface TodoStateType {
     id: string
     title: string
   }
+  pickDate?: string
 }
 
 export interface TodoStateProps {
@@ -43,5 +44,6 @@ export interface TodoReducerActions {
     | 'HANDLE_MODAL'
     | 'CREATE_CATEGORY'
     | 'SELECT'
+    | 'PICK_DATE'
   payload: TodoStateType
 }

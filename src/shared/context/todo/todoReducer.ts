@@ -40,6 +40,12 @@ export const todoReducer = (
         select: payload.select,
       }
 
+    case 'PICK_DATE':
+      return {
+        ...state,
+        pickDate: payload.pickDate,
+      }
+
     default:
       return state
   }

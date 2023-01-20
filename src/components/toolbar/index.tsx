@@ -29,6 +29,8 @@ const Toolbar = () => {
           options={[]}
           TriggerIconLeft={Calendar}
           triggerTitle={'Pick a date'}
+          type={'date'}
+          right
         />
       </div>
     </section>

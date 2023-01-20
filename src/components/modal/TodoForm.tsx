@@ -3,9 +3,11 @@ import styles from './index.module.sass'
 import { useDetectOutsideClick } from '../../shared/hooks'
 import { useTodoState } from '../../shared/context/todo/TodoState'
 import Select from '../select'
+import { Calendar } from '../icons'
 
 const TodoForm = () => {
   const { state, dispatch } = useTodoState()
+  const startDate = new Date()
 
   let ref = useDetectOutsideClick(() => {
     dispatch({
@@ -75,7 +77,16 @@ const TodoForm = () => {
 
       <div className={styles.todo_form_footer}>
         <div className={styles.todo_form_footer_left}>
-          <span>due date</span>
+          <Select
+            options={[]}
+            TriggerIconLeft={Calendar}
+            triggerTitle={state.pickDate ? state.pickDate : 'Pick a date'}
+            type={'date'}
+            bottom
+            left
+            startDate={startDate}
+          />
+
           <Select
             options={state.categories ? state.categories : []}
             triggerTitle={
