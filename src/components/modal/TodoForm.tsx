@@ -78,7 +78,9 @@ const TodoForm = () => {
           <span>due date</span>
           <Select
             options={state.categories ? state.categories : []}
-            triggerTitle={'Category'}
+            triggerTitle={
+              state.select?.title ? state.select?.title : 'Category'
+            }
           />
         </div>
 

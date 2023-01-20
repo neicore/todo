@@ -1,7 +1,7 @@
 import { ElementType, useState } from 'react'
+import { useTodoState } from '../../shared/context/todo/TodoState'
 import { useDetectOutsideClick } from '../../shared/hooks'
 import Active from '../active'
-import CountBadge from '../countBadge'
 import { ChevronDown, ChevronUp } from '../icons'
 import SelectItem from '../selectItem'
 import style from './index.module.sass'
@@ -35,13 +35,23 @@ const Select = ({
   TriggerIcon,
 }: Props) => {
   const [opened, setOpened] = useState(false)
+  const { state, dispatch } = useTodoState()
 
   let ref = useDetectOutsideClick(() => {
     setOpened(false)
   })
 
-  const handleNormalClick = (e: any) => {
-    console.log(e.currentTarget.getAttribute('value'))
+  const handleNormalClick = (id: string, title: string) => {
+    dispatch({
+      type: 'SELECT',
+      payload: {
+        select: {
+          id,
+          title,
+        },
+      },
+    })
+    setOpened(false)
   }
 
   const handleInputClick = (e: any) => {
@@ -65,7 +75,7 @@ const Select = ({
             </span>
 
             <span className={style.trigger_right}>
-              {activeBeacon ? <Active /> : <CountBadge count={'20'} />}
+              {activeBeacon ? <Active /> : null}
               {opened ? <ChevronUp /> : <ChevronDown />}
             </span>
           </button>
@@ -110,7 +120,7 @@ const Select = ({
               value={value}
               id={id}
               name={name}
-              handleClick={handleNormalClick}
+              handleClick={() => handleNormalClick(id, title)}
               key={id}
               icon="left"
               IconLeft={IconLeft}
@@ -143,7 +153,7 @@ const Select = ({
               value={value}
               id={id}
               name={name}
-              handleClick={handleNormalClick}
+              handleClick={() => handleNormalClick(id, title)}
               key={id}
               icon="both"
               IconLeft={IconLeft}
@@ -162,7 +172,7 @@ const Select = ({
               value={value}
               id={id}
               name={name}
-              handleClick={handleNormalClick}
+              handleClick={() => handleNormalClick(id, title)}
               key={id}
               icon="left"
               IconLeft={IconLeft}

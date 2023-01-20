@@ -11,6 +11,7 @@ const TodoState = ({ children }: TodoStateProps) => {
     todos: [],
     categories: [],
     modal: { child: null },
+    select: { id: '', title: '' },
   }
 
   const [state, dispatch] = useReducer(todoReducer, initialState)

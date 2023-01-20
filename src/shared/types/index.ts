@@ -23,6 +23,10 @@ export interface TodoStateType {
   modal?: {
     child: ReactNode
   }
+  select?: {
+    id: string
+    title: string
+  }
 }
 
 export interface TodoStateProps {
@@ -38,5 +42,6 @@ export interface TodoReducerActions {
     | 'FILTER_TODO'
     | 'HANDLE_MODAL'
     | 'CREATE_CATEGORY'
+    | 'SELECT'
   payload: TodoStateType
 }

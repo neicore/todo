@@ -34,6 +34,12 @@ export const todoReducer = (
       }
       return state
 
+    case 'SELECT':
+      return {
+        ...state,
+        select: payload.select,
+      }
+
     default:
       return state
   }
