@@ -4,6 +4,8 @@ import { useDetectOutsideClick } from '../../shared/hooks'
 import { useTodoState } from '../../shared/context/todo/TodoState'
 import Select from '../select'
 import { Calendar } from '../icons'
+import { nanoid } from 'nanoid'
+import { format } from 'date-fns'
 
 const TodoForm = () => {
   const { state, dispatch } = useTodoState()
@@ -36,17 +38,22 @@ const TodoForm = () => {
       titleRef.current?.value.trim() !== '' &&
       descriptionRef.current?.value.trim() !== ''
     ) {
-      // setTodos([
-      //   ...todos,
-      //   {
-      //     id: nanoid(5),
-      //     title: titleRef.current?.value.trim(),
-      //     description: descriptionRef.current?.value.trim(),
-      //     category: 1,
-      //     dueDate: Date.now(),
-      //     isCompleted: false,
-      //   } as unknown as Todo,
-      // ])
+      dispatch({
+        type: 'CREATE_TODO',
+        payload: {
+          todos: [
+            {
+              id: nanoid(5),
+              title: titleRef.current?.value.trim() ?? '',
+              description: descriptionRef.current?.value.trim(),
+              category: state.select?.title ?? '',
+              dateCreated: format(new Date(), 'PP'),
+              dueDate: state.pickDate,
+              isCompleted: false,
+            },
+          ],
+        },
+      })
 
       dispatch({
         type: 'HANDLE_MODAL',

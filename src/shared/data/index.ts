@@ -2,15 +2,6 @@ import { nanoid } from 'nanoid'
 import { Checkmark, Delete, Edit } from '../../components/icons'
 import { option } from '../../components/select'
 
-export interface Todo {
-  id: number | string
-  title: string
-  description: string
-  category?: number
-  dueDate?: Date
-  isCompleted: boolean
-}
-
 interface Category {
   id: number
   name: string
@@ -67,49 +58,6 @@ export const filterOptions: option[] = [
     value: 'Done',
     id: nanoid(5),
     name: 'filter-menu',
-  },
-]
-
-export const todos: Todo[] = [
-  {
-    id: 1,
-    title: 'Yolo',
-    description: 'You only live once',
-    dueDate: new Date(),
-    isCompleted: false,
-    category: 2,
-  },
-  {
-    id: 2,
-    title: 'Yolo',
-    description: 'You only live once',
-    dueDate: new Date(),
-    isCompleted: false,
-    category: 1,
-  },
-  {
-    id: 3,
-    title: 'Yolo',
-    description: 'You only live once',
-    dueDate: new Date(),
-    isCompleted: false,
-    category: 4,
-  },
-  {
-    id: 4,
-    title: 'Yolo',
-    description: 'You only live once',
-    dueDate: new Date(),
-    isCompleted: false,
-    category: 5,
-  },
-  {
-    id: 5,
-    title: 'Yolo',
-    description: 'You only live once',
-    dueDate: new Date(),
-    isCompleted: false,
-    category: 3,
   },
 ]
 

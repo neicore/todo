@@ -6,7 +6,7 @@ export interface Todo {
   description?: string
   category: string
   dateCreated: string
-  dueDate?: Date
+  dueDate?: string
   isCompleted: boolean
 }
 

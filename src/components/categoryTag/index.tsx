@@ -1,7 +1,7 @@
 import style from './index.module.sass'
 
 interface Props {
-  title: number | undefined
+  title: string
 }
 
 const CategoryTag = ({ title }: Props) => {

@@ -8,7 +8,8 @@ export const todoReducer = (
 
   switch (type) {
     case 'CREATE_TODO':
-      return state
+      // @ts-ignore //TODO: This typescript can do better
+      return { ...state, todos: [...state?.todos, payload?.todos[0]] }
 
     case 'EDIT_TODO':
       return state
