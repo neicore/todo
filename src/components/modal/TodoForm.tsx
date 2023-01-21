@@ -20,15 +20,6 @@ const TodoForm = () => {
 
   const startDate = new Date()
 
-  let ref = useDetectOutsideClick(() => {
-    dispatch({
-      type: 'HANDLE_MODAL',
-      payload: {
-        modal: { child: null },
-      },
-    })
-  })
-
   const clearState = () => {
     dispatch({
       type: 'PICK_DATE',
@@ -55,13 +46,12 @@ const TodoForm = () => {
     })
   }
 
+  let ref = useDetectOutsideClick(() => {
+    clearState()
+  })
+
   const handleCancel = () => {
-    dispatch({
-      type: 'HANDLE_MODAL',
-      payload: {
-        modal: { child: null },
-      },
-    })
+    clearState()
   }
 
   const handleSubmit = (e: any) => {
