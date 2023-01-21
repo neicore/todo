@@ -26,6 +26,7 @@ const Select = ({
   left,
   startDate,
   endDate,
+  dispatchToNormal,
 }: SelectProps) => {
   const [opened, setOpened] = useState(false)
   const { dispatch } = useTodoState()
@@ -35,15 +36,7 @@ const Select = ({
   })
 
   const handleNormalClick = (id: string, title: string) => {
-    dispatch({
-      type: 'SELECT',
-      payload: {
-        select: {
-          id,
-          title,
-        },
-      },
-    })
+    if (dispatchToNormal) dispatchToNormal(id, title)
     setOpened(false)
   }
 

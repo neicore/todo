@@ -67,6 +67,7 @@ export interface SelectProps {
   left?: boolean
   startDate?: Date
   endDate?: Date
+  dispatchToNormal?: (id: string, title: string) => void
 }
 
 export interface Option {

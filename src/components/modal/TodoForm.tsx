@@ -99,6 +99,9 @@ const TodoForm = () => {
             triggerTitle={
               state.select?.title ? state.select?.title : 'Category'
             }
+            dispatchToNormal={(id, title) => {
+              dispatch({ type: 'SELECT', payload: { select: { id, title } } })
+            }}
           />
         </div>
 

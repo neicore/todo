@@ -1,3 +1,4 @@
+import { useTodoState } from '../../shared/context/todo/TodoState'
 import { todoMenu } from '../../shared/data'
 import { TodoCardProps } from '../../shared/types'
 import CategoryTag from '../categoryTag'
@@ -6,6 +7,8 @@ import Select from '../select'
 import style from './index.module.sass'
 
 const TodoCard = ({ handleChange, todo }: TodoCardProps) => {
+  const { dispatch } = useTodoState()
+
   return (
     <div className={style.todo}>
       <input
@@ -27,6 +30,13 @@ const TodoCard = ({ handleChange, todo }: TodoCardProps) => {
             type="single-normal"
             triggerType="icon"
             TriggerIcon={<Menu />}
+            dispatchToNormal={(id, title) => {
+              if (title === 'Edit') {
+                dispatch({ type: 'EDIT_TODO', payload: { todos: [todo] } })
+              } else if (title === 'Delete') {
+                dispatch({ type: 'DELETE_TODO', payload: { todos: [todo] } })
+              }
+            }}
           />
         </div>
 

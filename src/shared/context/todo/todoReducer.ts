@@ -15,7 +15,11 @@ export const todoReducer = (
       return state
 
     case 'DELETE_TODO':
-      return state
+      return {
+        ...state,
+        // @ts-ignore //TODO: This typescript can do better
+        todos: [...state?.todos?.filter((t) => t.id !== payload.todos[0].id)],
+      }
 
     case 'SORT_TODO':
       return state
