@@ -150,6 +150,7 @@ const TodoForm = () => {
             dispatchToNormal={(id, title) => {
               dispatch({ type: 'SELECT', payload: { select: { id, title } } })
             }}
+            bottom
           />
         </div>
 

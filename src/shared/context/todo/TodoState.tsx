@@ -1,3 +1,4 @@
+import { nanoid } from 'nanoid'
 import { createContext, Dispatch, useContext, useReducer } from 'react'
 import { TodoReducerActions, TodoStateProps, TodoStateType } from '../../types'
 import { todoReducer } from './todoReducer'
@@ -9,7 +10,14 @@ const TodoContext = createContext(
 const TodoState = ({ children }: TodoStateProps) => {
   const initialState: TodoStateType = {
     todos: [],
-    categories: [],
+    categories: [
+      {
+        id: nanoid(5),
+        title: 'No Category',
+        name: 'No Category',
+        value: 'No Category',
+      },
+    ],
     modal: { child: null, todo: undefined },
     select: { id: '', title: '' },
     pickDate: '',
