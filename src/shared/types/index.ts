@@ -3,8 +3,11 @@ import { ChangeEventHandler, MouseEventHandler, ReactNode } from 'react'
 export interface Todo {
   id: string
   title: string
-  description?: string
-  category: string
+  description: string
+  category: {
+    id: string
+    title: string
+  }
   dateCreated: string
   dueDate?: string
   isCompleted: boolean
@@ -22,6 +25,7 @@ export interface TodoStateType {
   categories?: Category[]
   modal?: {
     child: ReactNode
+    todo?: Todo
   }
   select?: {
     id: string

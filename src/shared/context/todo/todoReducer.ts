@@ -12,7 +12,19 @@ export const todoReducer = (
       return { ...state, todos: [...state?.todos, payload?.todos[0]] }
 
     case 'EDIT_TODO':
-      return state
+      // @ts-ignore //TODO: This typescript can do better
+      let todoPayload = payload.todos[0]
+
+      return {
+        ...state,
+        todos: state.todos?.map((t) => {
+          if (t.id === todoPayload.id) {
+            return todoPayload
+          } else {
+            return t
+          }
+        }),
+      }
 
     case 'DELETE_TODO':
       return {
@@ -28,7 +40,10 @@ export const todoReducer = (
       return state
 
     case 'HANDLE_MODAL':
-      return { ...state, modal: { child: payload.modal?.child } }
+      return {
+        ...state,
+        modal: { child: payload.modal?.child, todo: payload.modal?.todo },
+      }
 
     case 'CREATE_CATEGORY':
       if (state.categories && payload.categories) {

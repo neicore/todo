@@ -10,7 +10,7 @@ const TodoState = ({ children }: TodoStateProps) => {
   const initialState: TodoStateType = {
     todos: [],
     categories: [],
-    modal: { child: null },
+    modal: { child: null, todo: undefined },
     select: { id: '', title: '' },
     pickDate: '',
   }
