@@ -38,7 +38,7 @@ const SelectItem = ({
             value={value}
           >
             <>
-              {IconLeft ? { IconLeft } : null} {title}
+              {IconLeft ? IconLeft : null} {title}
             </>
           </li>
         )
