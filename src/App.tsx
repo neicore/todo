@@ -20,9 +20,13 @@ function App() {
       <Toolbar />
 
       <div className={style.todo_container}>
-        {state.todos?.map((todo, index) => (
-          <TodoCard todo={todo} key={index} />
-        ))}
+        {state.todos?.length === 0 ? (
+          <h3 className={style.empty_todos}>Empty! No todos</h3>
+        ) : (
+          state.todos?.map((todo, index) => (
+            <TodoCard todo={todo} key={index} />
+          ))
+        )}
       </div>
       {state.modal?.child ? <Modal child={state.modal.child} /> : null}
     </div>
