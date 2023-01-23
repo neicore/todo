@@ -75,6 +75,7 @@ const TodoForm = () => {
                 title: state.select?.title ?? '',
               },
               dueDate: state.pickDate,
+              isCompleted: false
             },
           ],
         },
