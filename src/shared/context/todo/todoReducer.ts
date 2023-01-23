@@ -1,10 +1,11 @@
-import { TodoReducerActions, TodoStateType } from '../../types'
+import { Todo, TodoReducerActions, TodoStateType } from '../../types'
 
 export const todoReducer = (
   state: TodoStateType,
   action: TodoReducerActions
 ): TodoStateType => {
   const { type, payload } = action
+  let todoPayload: Todo
 
   switch (type) {
     case 'CREATE_TODO':
@@ -13,13 +14,31 @@ export const todoReducer = (
 
     case 'EDIT_TODO':
       // @ts-ignore //TODO: This typescript can do better
-      let todoPayload = payload.todos[0]
+      todoPayload = payload.todos[0]
 
       return {
         ...state,
         todos: state.todos?.map((t) => {
           if (t.id === todoPayload.id) {
             return todoPayload
+          } else {
+            return t
+          }
+        }),
+      }
+
+    case 'IS_COMPLETED_TODO':
+      // @ts-ignore //TODO: This typescript can do better
+      todoPayload = payload.todos[0]
+
+      return {
+        ...state,
+        todos: state.todos?.map((t) => {
+          if (t.id === todoPayload.id) {
+            return {
+              ...t,
+              isCompleted: todoPayload.isCompleted,
+            }
           } else {
             return t
           }

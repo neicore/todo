@@ -7,23 +7,52 @@ import TodoForm from '../modal/TodoForm'
 import Select from '../select'
 import style from './index.module.sass'
 
-const TodoCard = ({ handleChange, todo }: TodoCardProps) => {
+const TodoCard = ({ todo }: TodoCardProps) => {
   const { dispatch } = useTodoState()
 
   return (
-    <div className={style.todo}>
+    <div
+      className={style.todo}
+      style={{
+        opacity: todo.isCompleted ? '0.3' : '1',
+      }}
+    >
       <input
         type="checkbox"
         name="todos"
         id="todo-id"
-        onChange={handleChange}
+        onChange={() => {
+          dispatch({
+            type: 'IS_COMPLETED_TODO',
+            payload: {
+              todos: [
+                {
+                  ...todo,
+                  isCompleted: !todo.isCompleted,
+                },
+              ],
+            },
+          })
+        }}
       />
 
       <div className={style.todo_content}>
         <div className={style.todo_content_top}>
           <div className={style.todo_content_top_text}>
-            <h6>{todo.title}</h6>
-            <p>{todo.description}</p>
+            <h6
+              style={{
+                textDecoration: todo.isCompleted ? 'line-through' : 'none',
+              }}
+            >
+              {todo.title}
+            </h6>
+            <p
+              style={{
+                textDecoration: todo.isCompleted ? 'line-through' : 'none',
+              }}
+            >
+              {todo.description}
+            </p>
           </div>
 
           <Select

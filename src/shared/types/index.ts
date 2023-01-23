@@ -1,4 +1,4 @@
-import { ChangeEventHandler, MouseEventHandler, ReactNode } from 'react'
+import { MouseEventHandler, ReactNode } from 'react'
 
 export interface Todo {
   id: string
@@ -42,6 +42,7 @@ export interface TodoReducerActions {
   type:
     | 'CREATE_TODO'
     | 'EDIT_TODO'
+    | 'IS_COMPLETED_TODO'
     | 'DELETE_TODO'
     | 'SORT_TODO'
     | 'FILTER_TODO'
@@ -135,6 +136,5 @@ export interface SearchBarProps {
 }
 
 export interface TodoCardProps {
-  handleChange?: ChangeEventHandler<HTMLInputElement>
   todo: Todo
 }
