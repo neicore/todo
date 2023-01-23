@@ -90,14 +90,18 @@ const TodoCard = ({ todo }: TodoCardProps) => {
           />
         </div>
 
-        <div className={style.todo_content_bottom}>
-          <CategoryTag title={todo.category.title} />
-          {todo.dueDate ? (
-            <span
-              className={style.todo_content_bottom_due_date}
-            >{`${todo.dueDate}`}</span>
-          ) : null}
-        </div>
+        {(todo.category.title || todo.dueDate) ?? (
+          <div className={style.todo_content_bottom}>
+            {todo.category.title !== '' ?? (
+              <CategoryTag title={todo.category.title} />
+            )}
+            {todo.dueDate ? (
+              <span
+                className={style.todo_content_bottom_due_date}
+              >{`${todo.dueDate}`}</span>
+            ) : null}
+          </div>
+        )}
       </div>
     </div>
   )
