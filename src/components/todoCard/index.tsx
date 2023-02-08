@@ -20,6 +20,7 @@ const TodoCard = ({ todo }: TodoCardProps) => {
       <input
         type="checkbox"
         name="todos"
+        checked={todo.isCompleted}
         id="todo-id"
         onChange={() => {
           dispatch({
