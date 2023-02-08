@@ -6,17 +6,20 @@ export const todoReducer = (
 ): TodoStateType => {
   const { type, payload } = action
   let todoPayload: Todo
+  let todosState
 
   switch (type) {
     case 'CREATE_TODO':
       // @ts-ignore //TODO: This typescript can do better
-      return { ...state, todos: [...state?.todos, payload?.todos[0]] }
+      todosState = { ...state, todos: [...state?.todos, payload?.todos[0]] }
+      localStorage.setItem('todos', JSON.stringify(todosState))
+      return todosState
 
     case 'EDIT_TODO':
       // @ts-ignore //TODO: This typescript can do better
       todoPayload = payload.todos[0]
 
-      return {
+      todosState = {
         ...state,
         todos: state.todos?.map((t) => {
           if (t.id === todoPayload.id) {
@@ -27,11 +30,15 @@ export const todoReducer = (
         }),
       }
 
+      localStorage.setItem('todos', JSON.stringify(todosState))
+
+      return todosState
+
     case 'IS_COMPLETED_TODO':
       // @ts-ignore //TODO: This typescript can do better
       todoPayload = payload.todos[0]
 
-      return {
+      todosState = {
         ...state,
         todos: state.todos?.map((t) => {
           if (t.id === todoPayload.id) {
@@ -44,13 +51,18 @@ export const todoReducer = (
           }
         }),
       }
+      localStorage.setItem('todos', JSON.stringify(todosState))
+
+      return todosState
 
     case 'DELETE_TODO':
-      return {
+      todosState = {
         ...state,
         // @ts-ignore //TODO: This typescript can do better
         todos: [...state?.todos?.filter((t) => t.id !== payload.todos[0].id)],
       }
+      localStorage.setItem('todos', JSON.stringify(todosState))
+      return todosState
 
     case 'SORT_TODO':
       return state
@@ -66,24 +78,30 @@ export const todoReducer = (
 
     case 'CREATE_CATEGORY':
       if (state.categories && payload.categories) {
-        return {
+        todosState = {
           ...state,
           categories: [...state.categories, payload.categories[0]],
         }
+        localStorage.setItem('todos', JSON.stringify(todosState))
+        return todosState
       }
       return state
 
     case 'SELECT':
-      return {
+      todosState = {
         ...state,
         select: payload.select,
       }
+      localStorage.setItem('todos', JSON.stringify(todosState))
+      return todosState
 
     case 'PICK_DATE':
-      return {
+      todosState = {
         ...state,
         pickDate: payload.pickDate,
       }
+      localStorage.setItem('todos', JSON.stringify(todosState))
+      return todosState
 
     default:
       return state

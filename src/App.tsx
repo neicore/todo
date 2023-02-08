@@ -34,7 +34,7 @@ function App() {
             <TodoCard todo={todo} key={index} />
           ))}
       </div>
-      {state.modal?.child ? <Modal child={state.modal.child} /> : null}
+      {state.modal?.child && <Modal child={state.modal.child} />}
     </div>
   )
 }

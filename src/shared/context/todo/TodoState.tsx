@@ -8,16 +8,26 @@ const TodoContext = createContext(
 )
 
 const TodoState = ({ children }: TodoStateProps) => {
+  const todosState = localStorage.getItem('todos')
+
+  const todosStateLocal: TodoStateType | null = todosState
+    ? JSON.parse(todosState)
+    : null
+
   const initialState: TodoStateType = {
-    todos: [],
-    categories: [
-      {
-        id: nanoid(5),
-        title: 'No Category',
-        name: 'No Category',
-        value: 'No Category',
-      },
-    ],
+    todos: todosStateLocal?.todos,
+    categories:
+      todosStateLocal?.categories?.length === 0
+        ? [
+            {
+              id: nanoid(5),
+              title: 'No Category',
+              name: 'No Category',
+              value: 'No Category',
+            },
+          ]
+        : todosStateLocal?.categories,
+
     modal: { child: null, todo: undefined },
     select: { id: '', title: '' },
     pickDate: '',
