@@ -83,8 +83,10 @@ export const todoReducer = (
           categories: [...state.categories, payload.categories[0]],
         }
         localStorage.setItem('todos', JSON.stringify(todosState))
+        console.log(todosState)
         return todosState
       }
+
       return state
 
     case 'SELECT':
