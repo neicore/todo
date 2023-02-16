@@ -15,9 +15,9 @@ const TodoState = ({ children }: TodoStateProps) => {
     : null
 
   const initialState: TodoStateType = {
-    todos: todosStateLocal?.todos,
-    categories:
-      todosStateLocal?.categories?.length === 0
+    todos: todosStateLocal ? todosStateLocal.todos : [],
+    categories: todosStateLocal
+      ? todosStateLocal?.categories?.length === 0
         ? [
             {
               id: nanoid(5),
@@ -26,7 +26,15 @@ const TodoState = ({ children }: TodoStateProps) => {
               value: 'No Category',
             },
           ]
-        : todosStateLocal?.categories,
+        : todosStateLocal?.categories
+      : [
+          {
+            id: nanoid(5),
+            title: 'No Category',
+            name: 'No Category',
+            value: 'No Category',
+          },
+        ],
 
     modal: { child: null, todo: undefined },
     select: { id: '', title: '' },

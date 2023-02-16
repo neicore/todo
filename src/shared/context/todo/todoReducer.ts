@@ -6,12 +6,14 @@ export const todoReducer = (
 ): TodoStateType => {
   const { type, payload } = action
   let todoPayload: Todo
-  let todosState
+  let todosState: TodoStateType
 
   switch (type) {
     case 'CREATE_TODO':
+
       // @ts-ignore //TODO: This typescript can do better
       todosState = { ...state, todos: [...state?.todos, payload?.todos[0]] }
+      
       localStorage.setItem('todos', JSON.stringify(todosState))
       return todosState
 
@@ -83,7 +85,6 @@ export const todoReducer = (
           categories: [...state.categories, payload.categories[0]],
         }
         localStorage.setItem('todos', JSON.stringify(todosState))
-        console.log(todosState)
         return todosState
       }
 
