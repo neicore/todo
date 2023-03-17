@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { DayPicker } from 'react-day-picker'
 import 'react-day-picker/dist/style.css'
 
-import { useTodoState } from '../../shared/context/todo/TodoState'
+import { useTodoState } from '../../shared/context/todo/TodoProvider'
 import { useDetectOutsideClick } from '../../shared/hooks'
 import { SelectProps } from '../../shared/types'
 import Active from '../active'

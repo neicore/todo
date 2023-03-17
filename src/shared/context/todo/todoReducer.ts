@@ -10,10 +10,9 @@ export const todoReducer = (
 
   switch (type) {
     case 'CREATE_TODO':
-
       // @ts-ignore //TODO: This typescript can do better
       todosState = { ...state, todos: [...state?.todos, payload?.todos[0]] }
-      
+
       localStorage.setItem('todos', JSON.stringify(todosState))
       return todosState
 
@@ -65,12 +64,6 @@ export const todoReducer = (
       }
       localStorage.setItem('todos', JSON.stringify(todosState))
       return todosState
-
-    case 'SORT_TODO':
-      return state
-
-    case 'FILTER_TODO':
-      return state
 
     case 'HANDLE_MODAL':
       return {

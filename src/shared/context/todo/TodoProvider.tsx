@@ -1,13 +1,13 @@
 import { nanoid } from 'nanoid'
 import { createContext, Dispatch, useContext, useReducer } from 'react'
-import { TodoReducerActions, TodoStateProps, TodoStateType } from '../../types'
+import { TodoReducerActions, ProviderProps, TodoStateType } from '../../types'
 import { todoReducer } from './todoReducer'
 
 const TodoContext = createContext(
   {} as { state: TodoStateType; dispatch: Dispatch<TodoReducerActions> }
 )
 
-const TodoState = ({ children }: TodoStateProps) => {
+const TodoProvider = ({ children }: ProviderProps) => {
   const todosState = localStorage.getItem('todos')
 
   const todosStateLocal: TodoStateType | null = todosState
@@ -50,6 +50,6 @@ const TodoState = ({ children }: TodoStateProps) => {
   )
 }
 
-export default TodoState
+export default TodoProvider
 
 export const useTodoState = () => useContext(TodoContext)

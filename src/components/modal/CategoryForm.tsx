@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid'
 import { useState } from 'react'
-import { useTodoState } from '../../shared/context/todo/TodoState'
+import { useTodoState } from '../../shared/context/todo/TodoProvider'
 import { useDetectOutsideClick } from '../../shared/hooks'
 import styles from './index.module.sass'
 

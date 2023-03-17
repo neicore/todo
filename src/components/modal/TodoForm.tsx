@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styles from './index.module.sass'
 import { useDetectOutsideClick } from '../../shared/hooks'
-import { useTodoState } from '../../shared/context/todo/TodoState'
+import { useTodoState } from '../../shared/context/todo/TodoProvider'
 import Select from '../select'
 import { Calendar } from '../icons'
 import { nanoid } from 'nanoid'
@@ -75,7 +75,7 @@ const TodoForm = () => {
                 title: state.select?.title ?? '',
               },
               dueDate: state.pickDate,
-              isCompleted: false
+              isCompleted: false,
             },
           ],
         },

@@ -32,9 +32,10 @@ export interface TodoStateType {
     title: string
   }
   pickDate?: string
+  searchTerm?: string
 }
 
-export interface TodoStateProps {
+export interface ProviderProps {
   children: ReactNode
 }
 
@@ -44,8 +45,6 @@ export interface TodoReducerActions {
     | 'EDIT_TODO'
     | 'IS_COMPLETED_TODO'
     | 'DELETE_TODO'
-    | 'SORT_TODO'
-    | 'FILTER_TODO'
     | 'HANDLE_MODAL'
     | 'CREATE_CATEGORY'
     | 'SELECT'
@@ -137,4 +136,16 @@ export interface SearchBarProps {
 
 export interface TodoCardProps {
   todo: Todo
+}
+
+export interface FilterStateType {
+  filter: {
+    type: 'SEARCH' | 'FILTER' | 'SORT' | null
+    value: string
+  }
+}
+
+export interface FilterReducerActions {
+  type: 'SEARCH_TODO' | 'FILTER_TODO' | 'SORT_TODO'
+  payload: FilterStateType
 }

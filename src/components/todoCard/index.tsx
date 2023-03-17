@@ -1,4 +1,4 @@
-import { useTodoState } from '../../shared/context/todo/TodoState'
+import { useTodoState } from '../../shared/context/todo/TodoProvider'
 import { todoMenu } from '../../shared/data'
 import { TodoCardProps } from '../../shared/types'
 import CategoryTag from '../categoryTag'
